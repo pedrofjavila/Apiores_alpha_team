@@ -8,7 +8,7 @@ Main Contributors:
 
  Code Reviewers MCs
 
-Rui aka Jojo-- Ricardo aka "Design master" -- Rita aka "Folhado" -- Soraia aka "mummy".
+Rui aka Jojo-- Ricardo aka "Design master" -- Rita aka "Felhado" -- Soraia aka "mummy".
 
 The tasks are distributed by team.
 
