@@ -8,33 +8,21 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public abstract class GameObject implements Catchable {
 
     public SimpleGfxGridPosition pos;
-
     public SimpleGfxGrid grid;
-
     public Picture picture;
-
     protected GridDirection direction;
-
     public int points;
 
-
-
     public GameObject(SimpleGfxGridPosition position) {
-
         this.pos = position;
-
         this.picture = picture;
-
     }
 
-
     public  SimpleGfxGridPosition getPos(){
-
         return pos;
     }
 
     public GridDirection getDirection() {
-
         return direction;
     }
 }

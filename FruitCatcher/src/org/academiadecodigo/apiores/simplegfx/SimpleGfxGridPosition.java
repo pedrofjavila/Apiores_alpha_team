@@ -21,6 +21,7 @@ public class SimpleGfxGridPosition {
         int y = simpleGfxGrid.rowToY(row);
 
         picture = new Picture(col, row, link);
+
         show();
     }
 
