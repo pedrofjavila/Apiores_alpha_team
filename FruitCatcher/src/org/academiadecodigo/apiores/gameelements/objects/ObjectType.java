@@ -2,7 +2,7 @@ package org.academiadecodigo.apiores.gameelements.objects;
 
 public enum ObjectType {
     BEER(""),
-    CAR(""),
+    CAR("resources/carro.png"),
     BRACKETS("resources/chaveta.png"),
     BAD_DESIGN(""),
     SUMARIZER("resources/chaveta.png"),
