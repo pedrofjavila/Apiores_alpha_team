@@ -19,7 +19,7 @@ public class GameObject implements Catchable {
 
 
 
-    public GameObject(SimpleGfxGridPosition position, ObjectType objectType) {
+    public GameObject(SimpleGfxGridPosition position) {
 
         this.pos = position;
 

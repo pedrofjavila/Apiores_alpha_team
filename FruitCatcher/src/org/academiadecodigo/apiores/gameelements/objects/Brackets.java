@@ -1,4 +1,14 @@
 package org.academiadecodigo.apiores.gameelements.objects;
 
-public class Brackets extends GameObject implements Catchable {
+import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
+
+public class Brackets extends GameObject{
+
+
+    public Brackets(SimpleGfxGridPosition position){
+
+        super(position);
+
+    }
+
 }
