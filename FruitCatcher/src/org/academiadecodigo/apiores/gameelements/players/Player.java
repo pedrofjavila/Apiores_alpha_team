@@ -1,6 +1,8 @@
 package org.academiadecodigo.apiores.gameelements.players;
 
-<<<<<<< HEAD
+import org.academiadecodigo.apiores.gameelements.grid.GridPosition;
+import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
+import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
@@ -11,7 +13,18 @@ public abstract class Player implements KeyboardHandler {
     private Keyboard keyboard;
     private int score;
     private Picture picture;
+    private PlayerType type;
+    private SimpleGfxGridPosition position;
+    private SimpleGfxGrid grid;
 
+    public Player (SimpleGfxGridPosition position){
+        this.position= position;
+
+    }
+
+    public void setGrid(SimpleGfxGrid grid) {
+        this.grid = grid;
+    }
 
     public boolean isAlive(){
         return alive;
@@ -26,13 +39,25 @@ public abstract class Player implements KeyboardHandler {
     }
 
     public void setScore(int score) {
-        this.score = score;
+        this.score += score;
     }
 
+    // check if needed, if not to delete
     public void setPicture(Picture picture){
 
     }
 
+    public SimpleGfxGrid getGrid() {
+        return grid;
+    }
+
+    public SimpleGfxGridPosition getPosition() {
+        return position;
+    }
+
+    public PlayerType getType() {
+        return type;
+    }
 }
 
 
