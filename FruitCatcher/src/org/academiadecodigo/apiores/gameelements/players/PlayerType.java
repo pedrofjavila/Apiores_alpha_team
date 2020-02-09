@@ -1,8 +1,8 @@
 package org.academiadecodigo.apiores.gameelements.players;
 
 public enum PlayerType {
-    JOJO ("resources/sprite_jojo.png"),
-    SORAIA (" "),
+    JOJO ("resources/jojo_60x30.png"),
+    SORAIA ("resources/soraia60x30.png"),
     RICARDO(""),
     RITA("");
 
