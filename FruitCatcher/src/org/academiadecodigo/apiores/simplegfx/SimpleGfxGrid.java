@@ -50,7 +50,19 @@ public class SimpleGfxGrid {
     }
 
     public SimpleGfxGridPosition makeGridPosition(int col, int row) {
-        return new SimpleGfxGridPosition();
+        return new SimpleGfxGridPosition(col, row, this);
+    }
+
+    public SimpleGfxGridPosition makeGridPosition(){
+        return new SimpleGfxGridPosition(this);
+    }
+
+    public int columnToX(int column) {
+        return PADDING + cellSize * column;
+    }
+
+    public int rowToY(int row) {
+        return PADDING + cellSize * row;
     }
 
 
