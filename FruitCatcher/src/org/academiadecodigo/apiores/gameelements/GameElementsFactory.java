@@ -16,22 +16,22 @@ public class GameElementsFactory {
 
         switch(objectType) {
             case BEER:
-                object = new Beer(grid.makeGridPosition(randomCol, 0));
+                object = new Beer(grid.makeGridPosition(randomCol, 0,ObjectType.BEER.getLink()));
                 break;
             case CAR:
-                object = new Car(grid.makeGridPosition(randomCol, 0));
+                object = new Car(grid.makeGridPosition(randomCol, 0,ObjectType.CAR.getLink()));
                 break;
             case BRACKETS:
-                object = new Brackets(grid.makeGridPosition(randomCol, 0));
+                object = new Brackets(grid.makeGridPosition(randomCol, 0,ObjectType.BRACKETS.getLink()));
                 break;
             case PINEAPPLE:
-                object = new Pineapple(grid.makeGridPosition(randomCol, 0));
+                object = new Pineapple(grid.makeGridPosition(randomCol, 0,ObjectType.PINEAPPLE.getLink()));
                 break;
             case SUMARIZER:
-                object = new Sumarizer(grid.makeGridPosition(randomCol, 0));
+                object = new Sumarizer(grid.makeGridPosition(randomCol, 0,ObjectType.SUMARIZER.getLink()));
                 break;
             case BAD_DESIGN:
-                object = new BadDesign(grid.makeGridPosition(randomCol, 0));
+                object = new BadDesign(grid.makeGridPosition(randomCol, 0,ObjectType.BAD_DESIGN.getLink()));
                 break;
         }
         return object;
