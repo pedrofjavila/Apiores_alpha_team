@@ -5,7 +5,7 @@ import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class GameObject implements Catchable {
+public abstract class GameObject implements Catchable {
 
     public SimpleGfxGridPosition pos;
 
