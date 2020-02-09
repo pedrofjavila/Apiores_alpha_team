@@ -11,21 +11,25 @@ public class SimpleGfxGridPosition {
     private Picture picture;
     private SimpleGfxGrid simpleGfxGrid;
 
-    public SimpleGfxGridPosition(SimpleGfxGrid grid){
+    public SimpleGfxGridPosition(SimpleGfxGrid grid, String link){
         this.col = (int)(Math.random() * grid.getCols());
         this.row = (int)(Math.random() * grid.getRows());
 
         simpleGfxGrid = grid;
 
+        picture = new Picture(col, row, link);
+
         int x = simpleGfxGrid.columnToX(col);
         int y = simpleGfxGrid.rowToY(row);
     }
 
-    public SimpleGfxGridPosition(int col, int row, SimpleGfxGrid grid){
+    public SimpleGfxGridPosition(int col, int row, SimpleGfxGrid grid, String link){
         this.col = col;
         this.row = row;
 
         simpleGfxGrid = grid;
+
+        picture = new Picture(col, row, link);
 
         int x = simpleGfxGrid.columnToX(this.col);
         int y = simpleGfxGrid.rowToY(this.row);
