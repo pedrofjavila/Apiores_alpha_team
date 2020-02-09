@@ -49,12 +49,12 @@ public class SimpleGfxGrid {
         return this.picture.getWidth();
     }
 
-    public SimpleGfxGridPosition makeGridPosition(int col, int row) {
-        return new SimpleGfxGridPosition(col, row, this);
+    public SimpleGfxGridPosition makeGridPosition(int col, int row, String link) {
+        return new SimpleGfxGridPosition(col, row, this, link);
     }
 
-    public SimpleGfxGridPosition makeGridPosition(){
-        return new SimpleGfxGridPosition(this);
+    public SimpleGfxGridPosition makeGridPosition(String link){
+        return new SimpleGfxGridPosition(this, link);
     }
 
     public int columnToX(int column) {

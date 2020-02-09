@@ -11,7 +11,7 @@ public class GameElementsFactory {
         int randomObject = (int) (Math.random() * ObjectType.values().length);
         ObjectType objectType = ObjectType.values()[randomObject];
         int randomCol = (int) (Math.random() * grid.getCols());
-        
+
         GameObject object = null;
 
         switch(objectType) {
@@ -47,7 +47,7 @@ public class GameElementsFactory {
 
         switch (playerType) {
             case JOJO:
-                player = new Jojo(grid.makeGridPosition();
+                player = new Jojo(grid.makeGridPosition(20, 20, PlayerType.JOJO.getLink()));
                 break;
             case RICARDO:
                 player = new Ricardo(grid.makeGridPosition();
