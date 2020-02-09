@@ -3,7 +3,7 @@ package org.academiadecodigo.apiores.gameelements.players;
 public enum PlayerType {
     JOJO ("resources/jojo_60x30.png"),
     SORAIA ("resources/soraia60x30.png"),
-    RICARDO(""),
+    RICARDO("resources/ricardo60x30.png"),
     RITA("");
 
     private String link;
