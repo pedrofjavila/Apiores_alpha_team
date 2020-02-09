@@ -17,10 +17,11 @@ public class SimpleGfxGridPosition {
 
         simpleGfxGrid = grid;
 
-        picture = new Picture(col, row, link);
-
         int x = simpleGfxGrid.columnToX(col);
         int y = simpleGfxGrid.rowToY(row);
+
+        picture = new Picture(col, row, link);
+        show();
     }
 
     public SimpleGfxGridPosition(int col, int row, SimpleGfxGrid grid, String link){
@@ -29,12 +30,21 @@ public class SimpleGfxGridPosition {
 
         simpleGfxGrid = grid;
 
-        picture = new Picture(col, row, link);
-
         int x = simpleGfxGrid.columnToX(this.col);
         int y = simpleGfxGrid.rowToY(this.row);
 
+        picture = new Picture(col, row, link);
+        show();
+
     }
+
+    public void setPos(int col, int row){
+        this.col = col;
+        this.row = row;
+        show();
+    }
+
+
 
     public void show() {
         this.picture.draw();
@@ -54,12 +64,6 @@ public class SimpleGfxGridPosition {
 
     public void setRow(int row) {
         this.row = row;
-    }
-
-    public void setPos(int col, int row){
-        this.col = col;
-        this.row = row;
-
     }
 
     public void setPicture(Picture picture) {

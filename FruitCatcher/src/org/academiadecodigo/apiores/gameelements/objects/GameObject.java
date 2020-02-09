@@ -1,7 +1,6 @@
 package org.academiadecodigo.apiores.gameelements.objects;
 
 import org.academiadecodigo.apiores.gameelements.grid.GridDirection;
-import org.academiadecodigo.apiores.gameelements.grid.GridPosition;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
