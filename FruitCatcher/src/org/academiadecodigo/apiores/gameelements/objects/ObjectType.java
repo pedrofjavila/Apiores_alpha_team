@@ -1,10 +1,10 @@
 package org.academiadecodigo.apiores.gameelements.objects;
 
 public enum ObjectType {
-    BEER(""),
+    BEER("resources/cerveja.png"),
     CAR("resources/carro.png"),
     BRACKETS("resources/chaveta.png"),
-    BAD_DESIGN(""),
+    BAD_DESIGN("resources/bad_design.png"),
     SUMARIZER("resources/chaveta.png"),
     PINEAPPLE("resources/nanas.png");
 
