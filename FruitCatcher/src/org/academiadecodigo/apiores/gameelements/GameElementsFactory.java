@@ -50,13 +50,13 @@ public class GameElementsFactory {
                 player = new Jojo(grid.makeGridPosition(20, 20, PlayerType.JOJO.getLink()));
                 break;
             case RICARDO:
-                player = new Ricardo(grid.makeGridPosition();
+                player = new Ricardo(grid.makeGridPosition(20,30,PlayerType.RICARDO.getLink());
                 break;
             case SORAIA:
-                player = new Soraia(grid.makeGridPosition();
+                player = new Soraia(grid.makeGridPosition(20,30,PlayerType.SORAIA.getLink());
                 break;
             case RITA:
-                player = new Rita(grid.makeGridPosition();
+                player = new Rita(grid.makeGridPosition(20,30,PlayerType.RITA.getLink());
                 break;
         }
         return player;
