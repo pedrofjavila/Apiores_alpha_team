@@ -2,11 +2,12 @@ package org.academiadecodigo.apiores.gameelements.objects;
 
 import org.academiadecodigo.apiores.gameelements.grid.GridDirection;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
+import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class GameObject implements Catchable {
 
-    public GridPosition pos;
+    public SimpleGfxGridPosition pos;
 
     public SimpleGfxGrid grid;
 
@@ -14,7 +15,11 @@ public class GameObject implements Catchable {
 
     protected GridDirection direction;
 
-    public GameObject(GridPosition position, Picture picture) {
+    public int points;
+
+
+
+    public GameObject(SimpleGfxGridPosition position, ObjectType objectType) {
 
         this.pos = position;
 
@@ -23,12 +28,13 @@ public class GameObject implements Catchable {
     }
 
 
-    public  GridPosition getPos(){
+    public  SimpleGfxGridPosition getPos(){
 
         return pos;
     }
 
     public GridDirection getDirection() {
+
         return direction;
     }
 }
