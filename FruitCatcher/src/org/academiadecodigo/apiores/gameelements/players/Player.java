@@ -1,5 +1,6 @@
 package org.academiadecodigo.apiores.gameelements.players;
 
+<<<<<<< HEAD
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
@@ -31,7 +32,6 @@ public abstract class Player implements KeyboardHandler {
     public void setPicture(Picture picture){
 
     }
-
 
 }
 
