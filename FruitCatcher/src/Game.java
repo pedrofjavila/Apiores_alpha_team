@@ -1,3 +1,4 @@
+import org.academiadecodigo.apiores.gameelements.GameElementsFactory;
 import org.academiadecodigo.apiores.gameelements.objects.GameObject;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
 
@@ -14,5 +15,9 @@ public class Game {
 
     public void init() {
         grid.init();
+
+        for (int i = 0; i < gameobjects.length; i++){
+            gameobjects[i] = GameElementsFactory.createNewGameObject(grid);
+        }
     }
 }

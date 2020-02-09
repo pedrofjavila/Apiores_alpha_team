@@ -3,10 +3,10 @@ package org.academiadecodigo.apiores.gameelements.objects;
 public enum ObjectType {
     BEER(""),
     CAR(""),
-    BRACKETS(""),
+    BRACKETS("resources/chaveta.png"),
     BAD_DESIGN(""),
-    SUMARIZER(""),
-    PINEAPPLE("");
+    SUMARIZER("resources/chaveta.png"),
+    PINEAPPLE("resources/nanas.png");
 
 
     private String link;
