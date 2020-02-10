@@ -4,7 +4,7 @@ public enum PlayerType {
     JOJO ("resources/jojo_60x30.png"),
     SORAIA ("resources/soraia60x30.png"),
     RICARDO("resources/ricardo60x30.png"),
-    RITA("");
+    RITA("resources/rita.png");
 
     private String link;
 

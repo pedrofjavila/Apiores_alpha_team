@@ -15,7 +15,7 @@ public abstract class GameObject implements Catchable {
 
     public GameObject(SimpleGfxGridPosition position) {
         this.pos = position;
-        this.picture = picture;
+        this.picture = pos.getPicture();
     }
 
     public  SimpleGfxGridPosition getPos(){
