@@ -52,17 +52,38 @@ public abstract class Player implements KeyboardHandler {
         keyboard.addEventListener(slower);
     }
 
+    public void keyPressed(KeyboardEvent keyboardEvent) {
+
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
+            return;
+        }
+
+        switch (keyboardEvent.getKey()) {
+            case KeyboardEvent.KEY_LEFT:
+                currentDirection = GridDirection.LEFT;
+                break;
+            case KeyboardEvent.KEY_RIGHT:
+                currentDirection = GridDirection.RIGHT;
+                break;
+        }
+
+
+    }
+
+    public void keyReleased(KeyboardEvent keyboardEvent) {
+
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
+            speed = 0;
+        }
+
+    }
+
     public void move(){
         moveInDirection(currentDirection, speed);
     }
 
     public void moveInDirection(GridDirection direction, int speed) {
-        // Our car doest crash
-        // Accelerate in the chosen direction
-        this.currentDirection = direction;
-        for (int i = 0; i < speed; i++) {
-            getPos().moveInDirection(direction, 1);
-        }
+
     }
 
     public void setGrid(SimpleGfxGrid grid) {

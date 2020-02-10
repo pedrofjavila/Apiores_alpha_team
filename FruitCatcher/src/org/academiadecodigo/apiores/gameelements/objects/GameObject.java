@@ -25,4 +25,8 @@ public abstract class GameObject implements Catchable {
     public GridDirection getDirection() {
         return direction;
     }
+
+    public void setGrid(SimpleGfxGrid grid) {
+        this.grid = grid;
+    }
 }

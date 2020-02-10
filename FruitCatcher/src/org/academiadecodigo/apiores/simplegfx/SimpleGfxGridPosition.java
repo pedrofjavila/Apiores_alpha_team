@@ -1,7 +1,10 @@
 package org.academiadecodigo.apiores.simplegfx;
 
 import org.academiadecodigo.apiores.gameelements.grid.GridDirection;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+
+import java.awt.*;
 
 public class SimpleGfxGridPosition {
 
@@ -10,6 +13,8 @@ public class SimpleGfxGridPosition {
     private SimpleGfxGrid grid;
     private Picture picture;
     private SimpleGfxGrid simpleGfxGrid;
+    private Rectangle rectangle = new Rectangle(10, 10, 10, 10);
+
 
     public SimpleGfxGridPosition(SimpleGfxGrid grid, String link){
         this.col = (int)(Math.random() * grid.getCols());
