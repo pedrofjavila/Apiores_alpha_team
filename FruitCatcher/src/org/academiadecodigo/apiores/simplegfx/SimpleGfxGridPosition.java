@@ -70,4 +70,8 @@ public class SimpleGfxGridPosition {
     public void setPicture(Picture picture) {
         this.picture = picture;
     }
+
+    public Picture getPicture() {
+        return picture;
+    }
 }
