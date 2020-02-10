@@ -1,6 +1,6 @@
 package org.academiadecodigo.apiores.simplegfx;
 
-import org.academiadecodigo.simplegraphics.pictures.Picture;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class SimpleGfxGrid {
 
@@ -9,7 +9,7 @@ public class SimpleGfxGrid {
     private int cols;
     private int rows;
 
-    private Picture picture;
+    private Rectangle rectangle;
 
     public SimpleGfxGrid(int cols, int rows){
         this.cols = cols;
@@ -17,8 +17,8 @@ public class SimpleGfxGrid {
     }
 
     public void init(){
-        picture = new Picture();
-        picture.draw();
+        rectangle = new Rectangle(PADDING, PADDING, cols * cellSize, rows * cellSize);
+        rectangle.draw();
     }
 
     public int getCellSize() {
@@ -34,19 +34,19 @@ public class SimpleGfxGrid {
     }
 
     public int getWidth(){
-        return this.picture.getWidth();
+        return this.rectangle.getWidth();
     }
 
     public int getHeigth(){
-        return this.picture.getHeight();
+        return this.rectangle.getHeight();
     }
 
     public int getX(){
-        return this.picture.getWidth();
+        return this.rectangle.getWidth();
     }
 
     public int getY(){
-        return this.picture.getWidth();
+        return this.rectangle.getWidth();
     }
 
     public SimpleGfxGridPosition makeGridPosition(int col, int row, String link) {
