@@ -14,15 +14,21 @@ public abstract class GameObject implements Catchable {
     public int points;
 
     public GameObject(SimpleGfxGridPosition position) {
+
         this.pos = position;
         this.picture = pos.getPicture();
+
     }
 
-    public  SimpleGfxGridPosition getPos(){
+
+
+    public SimpleGfxGridPosition getPos() {
         return pos;
     }
 
     public GridDirection getDirection() {
+
+
         return direction;
     }
 
