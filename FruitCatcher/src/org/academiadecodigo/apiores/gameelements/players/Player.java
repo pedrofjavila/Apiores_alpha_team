@@ -3,12 +3,6 @@ package org.academiadecodigo.apiores.gameelements.players;
 import org.academiadecodigo.apiores.gameelements.grid.GridDirection;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
-import org.academiadecodigo.simplegraphics.graphics.Movable;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 //turned public
