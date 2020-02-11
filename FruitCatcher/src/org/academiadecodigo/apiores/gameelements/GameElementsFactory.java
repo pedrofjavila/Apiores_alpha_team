@@ -11,27 +11,28 @@ public class GameElementsFactory {
         int randomObject = (int) (Math.random() * ObjectType.values().length);
         ObjectType objectType = ObjectType.values()[randomObject];
         int randomCol = (int) (Math.random() * grid.getCols());
+        int speed = (int) (Math.random()*(65 - 20) + 20);
 
         GameObject object = null;
 
         switch(objectType) {
             case BEER:
-                object = new Beer(grid.makeGridPosition(randomCol, 0,ObjectType.BEER.getLink()));
+                object = new Beer(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.BEER.getLink()), speed);
                 break;
             case CAR:
-                object = new Car(grid.makeGridPosition(randomCol, 0,ObjectType.CAR.getLink()));
+                object = new Car(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.CAR.getLink()), speed);
                 break;
             case BRACKETS:
-                object = new Brackets(grid.makeGridPosition(randomCol, 0,ObjectType.BRACKETS.getLink()));
+                object = new Brackets(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.BRACKETS.getLink()), speed);
                 break;
             case PINEAPPLE:
-                object = new Pineapple(grid.makeGridPosition(randomCol, 0,ObjectType.PINEAPPLE.getLink()));
+                object = new Pineapple(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.PINEAPPLE.getLink()), speed);
                 break;
             case SUMARIZER:
-                object = new Sumarizer(grid.makeGridPosition(randomCol, 0,ObjectType.SUMARIZER.getLink()));
+                object = new Sumarizer(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.SUMARIZER.getLink()), speed);
                 break;
             case BAD_DESIGN:
-                object = new BadDesign(grid.makeGridPosition(randomCol, 0,ObjectType.BAD_DESIGN.getLink()));
+                object = new BadDesign(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.BAD_DESIGN.getLink()), speed);
                 break;
         }
         return object;

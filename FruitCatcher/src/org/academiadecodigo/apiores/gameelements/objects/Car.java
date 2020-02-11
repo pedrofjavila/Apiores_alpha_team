@@ -5,9 +5,9 @@ import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
 public class Car extends GameObject {
 
 
-    public Car(SimpleGfxGridPosition position){
+    public Car(SimpleGfxGridPosition position, int speed){
 
-        super(position);
+        super(position, speed);
     }
 
 }

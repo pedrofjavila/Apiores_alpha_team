@@ -1,5 +1,6 @@
 import org.academiadecodigo.apiores.gameelements.GameElementsFactory;
 import org.academiadecodigo.apiores.gameelements.objects.GameObject;
+import org.academiadecodigo.apiores.gameelements.objects.ObjectType;
 import org.academiadecodigo.apiores.gameelements.players.Player;
 import org.academiadecodigo.apiores.gameelements.players.PlayerType;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
@@ -37,6 +38,15 @@ public class Game {
 
         while (true){
             Thread.sleep(delay);
+
+            moveObjects();
+        }
+    }
+
+    public void moveObjects(){
+        for(int i = 0; i < gameobjects.length; i++){
+            gameobjects[i].move();
+
         }
     }
 }

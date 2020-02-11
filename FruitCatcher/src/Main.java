@@ -1,11 +1,14 @@
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
 
         Game game = new Game(60, 31, 200);
 
-        game.init();
+        System.out.println();
 
+        game.init();
+        game.start();
     }
+
 
 }
