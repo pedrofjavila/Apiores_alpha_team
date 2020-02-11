@@ -47,13 +47,13 @@ public class GameElementsFactory {
                 p1 = new Player(grid.makeGridPosition(grid.columnToX(30), grid.rowToY(29), PlayerType.JOJO.getLink()));
                 break;
             case RICARDO:
-                p1 = new Player(grid.makeGridPosition(20,30,PlayerType.RICARDO.getLink()));
+                p1 = new Player(grid.makeGridPosition(grid.columnToX(30), grid.rowToY(29),PlayerType.RICARDO.getLink()));
                 break;
             case SORAIA:
-                p1 = new Player(grid.makeGridPosition(20,30,PlayerType.SORAIA.getLink()));
+                p1 = new Player(grid.makeGridPosition(grid.columnToX(30), grid.rowToY(29),PlayerType.SORAIA.getLink()));
                 break;
             case RITA:
-                p1 = new Player(grid.makeGridPosition(20,30,PlayerType.RITA.getLink()));
+                p1 = new Player(grid.makeGridPosition(grid.columnToX(30), grid.rowToY(29),PlayerType.RITA.getLink()));
                 break;
         }
         return p1;

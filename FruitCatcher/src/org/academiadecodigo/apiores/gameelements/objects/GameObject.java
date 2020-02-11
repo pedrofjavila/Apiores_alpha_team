@@ -45,8 +45,8 @@ public abstract class GameObject implements Catchable {
         if(this.pos.getRow() < 890) {
             picture.translate(0, speed);
             pos.setRow(pos.getRow() + speed);
-            System.out.println(pos.getRow());
-            System.out.println(pos.getCol());
+            //System.out.println(pos.getRow());
+            //System.out.println(pos.getCol());
         }else{
             int randomCol = (int) (Math.random()*(1789 - 10) + 10);
             picture.translate(randomCol - pos.getCol(), -900);
