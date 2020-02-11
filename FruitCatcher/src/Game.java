@@ -12,7 +12,7 @@ public class Game {
     private SimpleGfxGrid grid;
     private GameObject[] gameobjects;
     private int delay;
-    private int numberOfObjects = 20;
+    private int numberOfObjects = 1;
     private Player p1;
 
 
@@ -47,7 +47,12 @@ public class Game {
     public void moveObjects(){
         for(int i = 0; i < gameobjects.length; i++){
             gameobjects[i].move();
-
+            System.out.println(gameobjects[i].picture.getX());
+            System.out.println(gameobjects[i].picture.getY());
+            System.out.println(p1.getPosition().getPicture().getX());
+            System.out.println(p1.getPosition().getPicture().getY());
         }
     }
+
+
 }
