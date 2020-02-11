@@ -5,8 +5,8 @@ import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
 public class Sumarizer extends GameObject {
 
 
-    public Sumarizer(SimpleGfxGridPosition position){
+    public Sumarizer(SimpleGfxGridPosition position, int speed){
 
-        super(position);
+        super(position, speed);
     }
 }
