@@ -37,28 +37,24 @@ public class GameElementsFactory {
         return object;
     }
 
-    public static Player createNewPlayer(SimpleGfxGrid grid){
+    public static Player createNewPlayer(SimpleGfxGrid grid, PlayerType player){
 
-        int randomPlayer = (int) (Math.random() * PlayerType.values().length);
-        PlayerType playerType = PlayerType.values()[randomPlayer];
-        int randomCol = (int) (Math.random() * grid.getCols());
+        Player p1 = null;
 
-        Player player = null;
-
-        switch (playerType) {
+        switch (player) {
             case JOJO:
-                player = new Jojo(grid.makeGridPosition(20, 20, PlayerType.JOJO.getLink()));
+                p1 = new Player(grid.makeGridPosition(20, 20, PlayerType.JOJO.getLink()));
                 break;
             case RICARDO:
-                player = new Ricardo(grid.makeGridPosition(20,30,PlayerType.RICARDO.getLink()));
+                p1 = new Player(grid.makeGridPosition(20,30,PlayerType.RICARDO.getLink()));
                 break;
             case SORAIA:
-                player = new Soraia(grid.makeGridPosition(20,30,PlayerType.SORAIA.getLink()));
+                p1 = new Player(grid.makeGridPosition(20,30,PlayerType.SORAIA.getLink()));
                 break;
             case RITA:
-                player = new Rita(grid.makeGridPosition(20,30,PlayerType.RITA.getLink()));
+                p1 = new Player(grid.makeGridPosition(20,30,PlayerType.RITA.getLink()));
                 break;
         }
-        return player;
+        return p1;
     }
 }
