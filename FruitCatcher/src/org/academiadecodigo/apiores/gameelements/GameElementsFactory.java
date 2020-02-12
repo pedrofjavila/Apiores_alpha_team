@@ -6,6 +6,8 @@ import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
 
 public class GameElementsFactory {
 
+    private PlayerType player;
+
     public static GameObject createNewGameObject(SimpleGfxGrid grid){
 
         int randomObject = (int) (Math.random() * ObjectType.values().length);
@@ -45,6 +47,7 @@ public class GameElementsFactory {
         switch (player) {
             case JOJO:
                 p1 = new Player(grid.makeGridPosition(grid.columnToX(grid.getCols()/2), grid.rowToY(29), PlayerType.JOJO.getLink()), grid);
+
                 break;
             case RICARDO:
                 p1 = new Player(grid.makeGridPosition(grid.columnToX(grid.getCols()/2), grid.rowToY(29),PlayerType.RICARDO.getLink()), grid);
@@ -58,4 +61,6 @@ public class GameElementsFactory {
         }
         return p1;
     }
+
+
 }

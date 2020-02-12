@@ -13,7 +13,7 @@ public class Game {
     private SimpleGfxGrid grid;
     private GameObject[] gameobjects;
     private int delay;
-    private int numberOfObjects = 1;
+    private int numberOfObjects = 20;
     private Player p1;
     private int counter;
 
