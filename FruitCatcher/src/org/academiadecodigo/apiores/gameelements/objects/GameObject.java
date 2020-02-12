@@ -12,13 +12,15 @@ public abstract class GameObject {
     public Picture picture;
     protected GridDirection direction;
     public int speed;
+    private ObjectType type;
 
 
-    public GameObject(SimpleGfxGridPosition position, int speed, SimpleGfxGrid grid) {
+    public GameObject(SimpleGfxGridPosition position, int speed, SimpleGfxGrid grid, ObjectType type) {
         this.pos = position;
         this.picture = pos.getPicture();
         this.speed = speed;
         this.grid = grid;
+        this.type = type;
     }
 
     public  SimpleGfxGridPosition getPos(){
