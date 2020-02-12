@@ -24,9 +24,10 @@ public class Player  {
 
 
 
-    public Player (SimpleGfxGridPosition position){
+    public Player (SimpleGfxGridPosition position, SimpleGfxGrid grid){
         this.position= position;
         this.keyboard = new KeyboardListener(this.position.getPicture());
+        this.grid = grid;
 
 
     }
@@ -114,7 +115,7 @@ public class Player  {
                         break;
                     }
                 case KeyboardEvent.KEY_RIGHT:
-                    if(position.getCol() < 1780) {
+                    if(position.getCol() < grid.getWidth() - 20 ) {
                         player.translate(30, 0);
                         position.rectangle.translate(30, 0);
                         position.setPos(position.getCol() + 30, 0);
