@@ -24,10 +24,11 @@ public class Player  {
 
 
 
-    public Player (SimpleGfxGridPosition position, SimpleGfxGrid grid){
+    public Player (SimpleGfxGridPosition position, SimpleGfxGrid grid, PlayerType type){
         this.position= position;
         this.keyboard = new KeyboardListener(this.position.getPicture());
         this.grid = grid;
+        this.type = type;
 
 
     }
@@ -41,6 +42,7 @@ public class Player  {
     public void setGrid(SimpleGfxGrid grid) {
         this.grid = grid;
     }
+
 
     public boolean isAlive(){
         return alive;
