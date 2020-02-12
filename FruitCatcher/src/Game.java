@@ -28,6 +28,8 @@ public class Game {
 
         grid.init();
         gameobjects = new GameObject[numberOfObjects];
+        System.out.println(grid.getWidth());
+        System.out.println(grid.getHeigth());
 
 
         for (int i = 0; i < gameobjects.length; i++) {
@@ -35,7 +37,6 @@ public class Game {
             gameobjects[i].setGrid(grid);
         }
         p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.JOJO);
-        System.out.println(p1.getPosition().getRow());
     }
 
     public void start() throws InterruptedException {

@@ -14,10 +14,11 @@ public abstract class GameObject {
     public int speed;
 
 
-    public GameObject(SimpleGfxGridPosition position, int speed) {
+    public GameObject(SimpleGfxGridPosition position, int speed, SimpleGfxGrid grid) {
         this.pos = position;
         this.picture = pos.getPicture();
         this.speed = speed;
+        this.grid = grid;
     }
 
     public  SimpleGfxGridPosition getPos(){
@@ -48,7 +49,7 @@ public abstract class GameObject {
             //System.out.println(pos.getRow());
             //System.out.println(pos.getCol());
         }else{
-            int randomCol = (int) (Math.random()*(1789 - 10) + 10);
+            int randomCol = (int) (Math.random()*(grid.getWidth() - 20) + 10);
             picture.translate(randomCol - pos.getCol(), -900);
             pos.rectangle.translate(randomCol - pos.getCol(), -900);//hitbox test
             this.pos.setRow(10);
