@@ -53,7 +53,6 @@ public class GameElementsFactory {
         switch (player) {
             case JOJO:
                 p1 = new Player(grid.makeGridPosition(grid.columnToX(grid.getCols()/2), grid.rowToY(29), PlayerType.JOJO.getLink()), grid, PlayerType.JOJO, ObjectType.BEER, ObjectType.PINEAPPLE, ObjectType.BRACKETS);
-
                 break;
             case RICARDO:
                 p1 = new Player(grid.makeGridPosition(grid.columnToX(grid.getCols()/2), grid.rowToY(29),PlayerType.RICARDO.getLink()), grid, PlayerType.RICARDO, ObjectType.BEER, ObjectType.PINEAPPLE, ObjectType.BAD_DESIGN);
