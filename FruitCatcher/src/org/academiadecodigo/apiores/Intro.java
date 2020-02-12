@@ -1,8 +1,11 @@
 package org.academiadecodigo.apiores;
 
 import org.academiadecodigo.apiores.gameelements.players.Player;
+import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Movable;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -11,22 +14,32 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Intro {
 
-    private Player.KeyboardListener keyboard;
+    private SimpleGfxGrid grid;
+    private KeyboardListener keyboard;
     private SimpleGfxGridPosition position;
-    private Picture picture;
-    private int keyPressed;
+    private Rectangle rectangle;
+    private int keyPressed = 0;
 
-    public Intro() {
-
+    public Intro(SimpleGfxGrid grid) {
+        this.grid = grid;
+        keyboard = new KeyboardListener();
+        rectangle = new Rectangle(10,10, grid.getWidth(), grid.getHeigth());
     }
 
+    public void init() {
+        while (keyPressed == 0) {
+            rectangle.setColor(Color.BLACK);
+            rectangle.fill();
+        }
+    }
+
+    public int getKeyPressed(){
+        return keyPressed;
+    }
 
     public class KeyboardListener implements KeyboardHandler {
-        private Movable cursor;
 
-        public KeyboardListener(Movable cursor) {
-            this.cursor = cursor;
-
+        public KeyboardListener() {
 
             Keyboard keyboard = new Keyboard(this);
 
@@ -62,15 +75,19 @@ public class Intro {
             switch (keyboardEvent.getKey()){
                 case KeyboardEvent.KEY_1:
                     keyPressed = 1;
+                    rectangle.delete();
                     break;
                 case KeyboardEvent.KEY_2:
                     keyPressed = 2;
+                    rectangle.delete();
                     break;
                 case KeyboardEvent.KEY_3:
                     keyPressed = 3;
+                    rectangle.delete();
                     break;
                 case KeyboardEvent.KEY_4:
                     keyPressed = 4;
+                    rectangle.delete();
                     break;
             }
         }
@@ -78,10 +95,6 @@ public class Intro {
         @Override
         public void keyReleased(KeyboardEvent keyboardEvent) {
 
-        }
-
-        public int getKeyPressed(){
-            return keyPressed;
         }
     }
 }

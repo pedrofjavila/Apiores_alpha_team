@@ -1,3 +1,4 @@
+import org.academiadecodigo.apiores.Intro;
 import org.academiadecodigo.apiores.gameelements.GameElementsFactory;
 import org.academiadecodigo.apiores.gameelements.objects.GameObject;
 import org.academiadecodigo.apiores.gameelements.objects.ObjectType;
@@ -16,7 +17,7 @@ public class Game {
     private int numberOfObjects = 1;
     private Player p1;
     private int counter;
-
+    private Intro intro;
 
 
     public Game(int cols, int rows, int delay) {
@@ -27,18 +28,22 @@ public class Game {
     public void init() {
 
         grid.init();
+        intro = new Intro(grid);
         gameobjects = new GameObject[numberOfObjects];
+        System.out.println(grid.getWidth());
+        System.out.println(grid.getHeigth());
 
 
         for (int i = 0; i < gameobjects.length; i++) {
             gameobjects[i] = GameElementsFactory.createNewGameObject(grid);
             gameobjects[i].setGrid(grid);
         }
-        p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.JOJO);
-        System.out.println(p1.getPosition().getRow());
     }
 
     public void start() throws InterruptedException {
+
+        intro.init();
+        createPlayer(intro.getKeyPressed());
 
         while (true) {
             Thread.sleep(delay);
@@ -90,6 +95,24 @@ public class Game {
                 ((p2.getX()+p2.getWidth() >= p1.getX() && p2.getX()+p2.getWidth() <= p1.getX()+p1.getWidth())) &&
                  (p2.getY() >= p1.getY() && p2.getY() <= p1.getY()+p1.getHeight());
 
+    }
+
+    public void createPlayer(int i){
+
+        switch (i){
+            case 1:
+                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.JOJO);
+                break;
+            case 2:
+                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.SORAIA);
+                break;
+            case 3:
+                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.RICARDO);
+                break;
+            case 4:
+                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.RITA);
+                break;
+        }
     }
 }
 
