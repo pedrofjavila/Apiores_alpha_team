@@ -14,9 +14,10 @@ public class Game {
     private SimpleGfxGrid grid;
     private GameObject[] gameobjects;
     private int delay;
-    private int numberOfObjects = 1;
+    private int numberOfObjects = 5;
     private Player p1;
-    private int counter;
+    private int score;
+    private int health;
     private Intro intro;
 
 
@@ -63,26 +64,10 @@ public class Game {
 
 
             if(Game.Collides(p1.getPosition().getPicture(), object.getPos().getPicture()))           {
-                counter++;
-                System.out.println(counter);
+                scoreChanger(gameobjects[i]);
+                System.out.println(score);
+                System.out.println(health);
             }
-
-            /*System.out.println(gameobjects[i].picture.getX() + " objects");
-            System.out.println(gameobjects[i].picture.getY() + " objects");
-            System.out.println(p1.getPosition().getPicture().getX() + " player");
-            System.out.println(p1.getPosition().getPicture().getY() +  " player")*/
-            ;
-
-
-
-           /* int p1MaxX = p1.getPosition().getPicture().getMaxX();
-            int p1Y = p1.getPosition().getPicture().getY();
-            int p1MaxY = p1.getPosition().getPicture().getMaxY();
-            int objX = gameobjects[i].getPos().getPicture().getX();
-            int objMaxX = gameobjects[i].getPos().getPicture().getMaxX();
-            int objY = gameobjects[i].getPos().getPicture().getY();
-            int objMaxY = gameobjects[i].getPos().getPicture().getMaxY(); */
-
         }
     }
 
@@ -96,6 +81,62 @@ public class Game {
                  (p2.getY() >= p1.getY() && p2.getY() <= p1.getY()+p1.getHeight());
 
     }
+
+    public void scoreChanger(GameObject obj){
+        if(p1.getType() == PlayerType.JOJO){
+
+            if(obj.getType() == ObjectType.BEER){
+                score++;
+            }
+            if(obj.getType() == ObjectType.BRACKETS){
+                health--;
+            }
+            if(obj.getType() == ObjectType.PINEAPPLE){
+                score++;
+            }
+        }
+
+        if(p1.getType() == PlayerType.RITA){
+
+            if(obj.getType() == ObjectType.BEER){
+                score++;
+            }
+            if(obj.getType() == ObjectType.CAR){
+                score++;
+            }
+            if(obj.getType() == ObjectType.PINEAPPLE){
+                health = 0;
+            }
+        }
+
+        if(p1.getType() == PlayerType.RICARDO){
+
+            if(obj.getType() == ObjectType.BEER){
+                score++;
+            }
+            if(obj.getType() == ObjectType.PINEAPPLE){
+                score++;
+            }
+            if(obj.getType() == ObjectType.BAD_DESIGN){
+                health--;
+            }
+        }
+
+        if(p1.getType() == PlayerType.SORAIA){
+
+            if(obj.getType() == ObjectType.BEER){
+                score++;
+            }
+            if(obj.getType() == ObjectType.CAR){
+                health--;
+            }
+            if(obj.getType() == ObjectType.PINEAPPLE){
+                score++;
+            }
+        }
+    }
+
+
 
     public void createPlayer(int i){
 
