@@ -5,9 +5,9 @@ import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
 public class Beer extends GameObject {
 
 
-    public Beer(SimpleGfxGridPosition position) {
+    public Beer(SimpleGfxGridPosition position,int speed) {
 
-        super(position);
+        super(position, speed);
     }
 
 }

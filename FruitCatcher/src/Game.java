@@ -1,5 +1,6 @@
 import org.academiadecodigo.apiores.gameelements.GameElementsFactory;
 import org.academiadecodigo.apiores.gameelements.objects.GameObject;
+import org.academiadecodigo.apiores.gameelements.objects.ObjectType;
 import org.academiadecodigo.apiores.gameelements.players.Player;
 import org.academiadecodigo.apiores.gameelements.players.PlayerType;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
@@ -11,7 +12,7 @@ public class Game {
     private SimpleGfxGrid grid;
     private GameObject[] gameobjects;
     private int delay;
-    private int numberOfObjects = 20;
+    private int numberOfObjects = 1;
     private Player p1;
 
 
@@ -25,6 +26,7 @@ public class Game {
         grid.init();
         gameobjects = new GameObject[numberOfObjects];
         p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.JOJO);
+        System.out.println(p1.getPosition().getRow());
 
 
         for (int i = 0; i < gameobjects.length; i++){
@@ -37,6 +39,20 @@ public class Game {
 
         while (true){
             Thread.sleep(delay);
+
+            moveObjects();
         }
     }
+
+    public void moveObjects(){
+        for(int i = 0; i < gameobjects.length; i++){
+            gameobjects[i].move();
+            System.out.println(gameobjects[i].picture.getX());
+            System.out.println(gameobjects[i].picture.getY());
+            System.out.println(p1.getPosition().getPicture().getX());
+            System.out.println(p1.getPosition().getPicture().getY());
+        }
+    }
+
+
 }

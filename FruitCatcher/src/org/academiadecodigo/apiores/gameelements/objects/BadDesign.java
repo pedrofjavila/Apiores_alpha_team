@@ -5,9 +5,9 @@ import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
 public class BadDesign extends GameObject {
 
 
-    public BadDesign(SimpleGfxGridPosition position){
+    public BadDesign(SimpleGfxGridPosition position, int speed){
 
-        super(position);
+        super(position, speed);
     }
 
 }
