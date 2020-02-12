@@ -14,9 +14,10 @@ public class Game {
     private SimpleGfxGrid grid;
     private GameObject[] gameobjects;
     private int delay;
-    private int numberOfObjects = 20;
+    private int numberOfObjects = 5;
     private Player p1;
-    private int counter;
+    private int score;
+    private int health;
     private Intro intro;
 
 
@@ -63,8 +64,9 @@ public class Game {
 
 
             if(Game.Collides(p1.getPosition().getPicture(), object.getPos().getPicture()))           {
-                counter++;
-                System.out.println(counter);
+                scoreChanger(gameobjects[i]);
+                System.out.println(score);
+                System.out.println(health);
             }
         }
     }
@@ -80,9 +82,57 @@ public class Game {
 
     }
 
-    public void killable(){
+    public void scoreChanger(GameObject obj){
         if(p1.getType() == PlayerType.JOJO){
 
+            if(obj.getType() == ObjectType.BEER){
+                score++;
+            }
+            if(obj.getType() == ObjectType.BRACKETS){
+                health--;
+            }
+            if(obj.getType() == ObjectType.PINEAPPLE){
+                score++;
+            }
+        }
+
+        if(p1.getType() == PlayerType.RITA){
+
+            if(obj.getType() == ObjectType.BEER){
+                score++;
+            }
+            if(obj.getType() == ObjectType.CAR){
+                score++;
+            }
+            if(obj.getType() == ObjectType.PINEAPPLE){
+                health = 0;
+            }
+        }
+
+        if(p1.getType() == PlayerType.RICARDO){
+
+            if(obj.getType() == ObjectType.BEER){
+                score++;
+            }
+            if(obj.getType() == ObjectType.PINEAPPLE){
+                score++;
+            }
+            if(obj.getType() == ObjectType.BAD_DESIGN){
+                health--;
+            }
+        }
+
+        if(p1.getType() == PlayerType.SORAIA){
+
+            if(obj.getType() == ObjectType.BEER){
+                score++;
+            }
+            if(obj.getType() == ObjectType.CAR){
+                health--;
+            }
+            if(obj.getType() == ObjectType.PINEAPPLE){
+                score++;
+            }
         }
     }
 

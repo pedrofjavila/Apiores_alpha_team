@@ -39,6 +39,10 @@ public abstract class GameObject {
         return speed;
     }
 
+    public ObjectType getType() {
+        return type;
+    }
+
     //boundaries and object movement!
 
 
