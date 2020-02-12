@@ -8,10 +8,16 @@ public class GameElementsFactory {
 
     private PlayerType player;
 
-    public static GameObject createNewGameObject(SimpleGfxGrid grid){
+    public static GameObject createNewGameObject(SimpleGfxGrid grid, ObjectType scorer, ObjectType scorer2, ObjectType killer){
 
-        int randomObject = (int) (Math.random() * ObjectType.values().length);
-        ObjectType objectType = ObjectType.values()[randomObject];
+        int randomObject = (int) (Math.random() * 3);
+        ObjectType[] playerObjects =  {
+                scorer,
+                scorer2,
+                killer
+        };
+
+        ObjectType objectType = playerObjects[randomObject];
         int randomCol = (int) (Math.random() * grid.getCols());
         int speed = (int) (Math.random()*(65 - 20) + 20);
 
@@ -46,17 +52,17 @@ public class GameElementsFactory {
 
         switch (player) {
             case JOJO:
-                p1 = new Player(grid.makeGridPosition(grid.columnToX(grid.getCols()/2), grid.rowToY(29), PlayerType.JOJO.getLink()), grid, PlayerType.JOJO);
+                p1 = new Player(grid.makeGridPosition(grid.columnToX(grid.getCols()/2), grid.rowToY(29), PlayerType.JOJO.getLink()), grid, PlayerType.JOJO, ObjectType.BEER, ObjectType.PINEAPPLE, ObjectType.BRACKETS);
 
                 break;
             case RICARDO:
-                p1 = new Player(grid.makeGridPosition(grid.columnToX(grid.getCols()/2), grid.rowToY(29),PlayerType.RICARDO.getLink()), grid, PlayerType.RICARDO);
+                p1 = new Player(grid.makeGridPosition(grid.columnToX(grid.getCols()/2), grid.rowToY(29),PlayerType.RICARDO.getLink()), grid, PlayerType.RICARDO, ObjectType.BEER, ObjectType.PINEAPPLE, ObjectType.BAD_DESIGN);
                 break;
             case SORAIA:
-                p1 = new Player(grid.makeGridPosition(grid.columnToX(grid.getCols()/2), grid.rowToY(29),PlayerType.SORAIA.getLink()), grid, PlayerType.SORAIA);
+                p1 = new Player(grid.makeGridPosition(grid.columnToX(grid.getCols()/2), grid.rowToY(29),PlayerType.SORAIA.getLink()), grid, PlayerType.SORAIA, ObjectType.BEER, ObjectType.PINEAPPLE, ObjectType.CAR);
                 break;
             case RITA:
-                p1 = new Player(grid.makeGridPosition(grid.columnToX(grid.getCols()/2), grid.rowToY(29),PlayerType.RITA.getLink()), grid, PlayerType.RITA);
+                p1 = new Player(grid.makeGridPosition(grid.columnToX(grid.getCols()/2), grid.rowToY(29),PlayerType.RITA.getLink()), grid, PlayerType.RITA, ObjectType.BEER, ObjectType.CAR, ObjectType.PINEAPPLE);
                 break;
         }
         return p1;
