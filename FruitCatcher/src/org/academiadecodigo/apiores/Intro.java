@@ -12,10 +12,9 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Intro {
 
     private Player.KeyboardListener keyboard;
-
     private SimpleGfxGridPosition position;
-
     private Picture picture;
+    private int keyPressed;
 
     public Intro() {
 
@@ -60,11 +59,29 @@ public class Intro {
         @Override
         public void keyPressed(KeyboardEvent keyboardEvent) {
 
+            switch (keyboardEvent.getKey()){
+                case KeyboardEvent.KEY_1:
+                    keyPressed = 1;
+                    break;
+                case KeyboardEvent.KEY_2:
+                    keyPressed = 2;
+                    break;
+                case KeyboardEvent.KEY_3:
+                    keyPressed = 3;
+                    break;
+                case KeyboardEvent.KEY_4:
+                    keyPressed = 4;
+                    break;
+            }
         }
 
         @Override
         public void keyReleased(KeyboardEvent keyboardEvent) {
 
+        }
+
+        public int getKeyPressed(){
+            return keyPressed;
         }
     }
 }
