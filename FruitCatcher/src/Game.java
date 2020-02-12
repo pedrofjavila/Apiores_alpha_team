@@ -16,8 +16,7 @@ public class Game {
     private int delay;
     private int numberOfObjects = 5;
     private Player p1;
-    private int score;
-    private int health;
+
     private Intro intro;
 
 
@@ -35,21 +34,66 @@ public class Game {
         System.out.println(grid.getHeigth());
 
 
-        for (int i = 0; i < gameobjects.length; i++) {
-            gameobjects[i] = GameElementsFactory.createNewGameObject(grid);
-            gameobjects[i].setGrid(grid);
-        }
     }
 
     public void start() throws InterruptedException {
 
         intro.init();
         createPlayer(intro.getKeyPressed());
+        itemSetter(p1);
 
         while (true) {
             Thread.sleep(delay);
 
             moveObjects();
+        }
+    }
+
+
+
+    public void itemFiller(ObjectType scorer, ObjectType scorer2, ObjectType killer){
+
+        for (int i = 0; i < gameobjects.length; i++) {
+
+            gameobjects[i] = GameElementsFactory.createNewGameObject(grid, scorer, scorer2, killer);
+            gameobjects[i].setGrid(grid);
+        }
+
+
+    }
+
+    public void itemSetter(Player player){
+        if(player.getType() == PlayerType.JOJO){
+            itemFiller(player.getItemScorer(), player.getItemScorer2(), player.getKillerItem());
+        }
+
+        if(player.getType() == PlayerType.SORAIA){
+            itemFiller(player.getItemScorer(), player.getItemScorer2(), player.getKillerItem());
+        }
+        if(player.getType() == PlayerType.RICARDO){
+            itemFiller(player.getItemScorer(), player.getItemScorer2(), player.getKillerItem());
+        }
+        if(player.getType() == PlayerType.RITA){
+            itemFiller(player.getItemScorer(), player.getItemScorer2(), player.getKillerItem());
+        }
+
+    }
+
+    public void createPlayer(int i){
+
+        switch (i){
+            case 1:
+                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.JOJO);
+                break;
+            case 2:
+                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.SORAIA);
+                break;
+            case 3:
+                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.RICARDO);
+                break;
+            case 4:
+                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.RITA);
+                break;
         }
     }
 
@@ -65,8 +109,8 @@ public class Game {
 
             if(Game.Collides(p1.getPosition().getPicture(), object.getPos().getPicture()))           {
                 scoreChanger(gameobjects[i]);
-                System.out.println(score);
-                System.out.println(health);
+                System.out.println(p1.getScore());
+                System.out.println(p1.getHealth());
             }
         }
     }
@@ -86,75 +130,57 @@ public class Game {
         if(p1.getType() == PlayerType.JOJO){
 
             if(obj.getType() == ObjectType.BEER){
-                score++;
+                p1.setScore();
             }
             if(obj.getType() == ObjectType.BRACKETS){
-                health--;
+                p1.healthDecrement();
             }
             if(obj.getType() == ObjectType.PINEAPPLE){
-                score++;
+                p1.setScore();
             }
         }
 
         if(p1.getType() == PlayerType.RITA){
 
             if(obj.getType() == ObjectType.BEER){
-                score++;
+                p1.setScore();
             }
             if(obj.getType() == ObjectType.CAR){
-                score++;
+                p1.healthDecrement();
             }
             if(obj.getType() == ObjectType.PINEAPPLE){
-                health = 0;
+                p1.killRita();
             }
         }
 
         if(p1.getType() == PlayerType.RICARDO){
 
             if(obj.getType() == ObjectType.BEER){
-                score++;
+                p1.setScore();
             }
             if(obj.getType() == ObjectType.PINEAPPLE){
-                score++;
+                p1.setScore();
             }
             if(obj.getType() == ObjectType.BAD_DESIGN){
-                health--;
+                p1.healthDecrement();
             }
         }
 
         if(p1.getType() == PlayerType.SORAIA){
 
             if(obj.getType() == ObjectType.BEER){
-                score++;
+                p1.setScore();
             }
             if(obj.getType() == ObjectType.CAR){
-                health--;
+                p1.healthDecrement();
             }
             if(obj.getType() == ObjectType.PINEAPPLE){
-                score++;
+                p1.setScore();
             }
         }
     }
 
 
-
-    public void createPlayer(int i){
-
-        switch (i){
-            case 1:
-                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.JOJO);
-                break;
-            case 2:
-                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.SORAIA);
-                break;
-            case 3:
-                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.RICARDO);
-                break;
-            case 4:
-                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.RITA);
-                break;
-        }
-    }
 }
 
 
