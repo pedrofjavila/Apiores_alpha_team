@@ -17,7 +17,7 @@ public class Player  {
     private boolean alive = true;
     private KeyboardListener keyboard;
     private int score;
-    private int health;
+    private int health = 50;
     private Picture picture;
     private PlayerType type;
     private SimpleGfxGridPosition position;

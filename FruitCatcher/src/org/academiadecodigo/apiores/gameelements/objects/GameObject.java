@@ -14,7 +14,6 @@ public abstract class GameObject {
     public int speed;
     private ObjectType type;
 
-
     public GameObject(SimpleGfxGridPosition position, int speed, SimpleGfxGrid grid, ObjectType type) {
         this.pos = position;
         this.picture = pos.getPicture();
@@ -45,8 +44,6 @@ public abstract class GameObject {
 
     //boundaries and object movement!
 
-
-
     public void move(){
         if(this.pos.getRow() < 900) {
             picture.translate(0, speed);
@@ -61,8 +58,6 @@ public abstract class GameObject {
             this.pos.setRow(10);
             this.pos.setCol(randomCol);
             speed = (int) (Math.random()*(65 - 20) + 20);
-
         }
-
     }
 }

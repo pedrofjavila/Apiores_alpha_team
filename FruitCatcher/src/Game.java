@@ -16,9 +16,7 @@ public class Game {
     private int delay;
     private int numberOfObjects = 5;
     private Player p1;
-
     private Intro intro;
-
 
     public Game(int cols, int rows, int delay) {
         this.grid = new SimpleGfxGrid(cols, rows);
@@ -32,8 +30,6 @@ public class Game {
         gameobjects = new GameObject[numberOfObjects];
         System.out.println(grid.getWidth());
         System.out.println(grid.getHeigth());
-
-
     }
 
     public void start() throws InterruptedException {
@@ -42,11 +38,19 @@ public class Game {
         createPlayer(intro.getKeyPressed());
         itemSetter(p1);
 
-        while (true) {
-            Thread.sleep(delay);
+            while (true) {
+                if (gameWin() || gameOver()) {
+                    break;
+                }
+                Thread.sleep(delay);
 
-            moveObjects();
-        }
+                moveObjects();
+            }
+            while(true) {
+
+                init();
+                start();
+            }
     }
 
 
@@ -63,17 +67,17 @@ public class Game {
     }
 
     public void itemSetter(Player player){
-        if(player.getType() == PlayerType.JOJO){
-            itemFiller(player.getItemScorer(), player.getItemScorer2(), player.getKillerItem());
-        }
-
         if(player.getType() == PlayerType.SORAIA){
             itemFiller(player.getItemScorer(), player.getItemScorer2(), player.getKillerItem());
         }
-        if(player.getType() == PlayerType.RICARDO){
+
+        if(player.getType() == PlayerType.JOJO){
             itemFiller(player.getItemScorer(), player.getItemScorer2(), player.getKillerItem());
         }
         if(player.getType() == PlayerType.RITA){
+            itemFiller(player.getItemScorer(), player.getItemScorer2(), player.getKillerItem());
+        }
+        if(player.getType() == PlayerType.RICARDO){
             itemFiller(player.getItemScorer(), player.getItemScorer2(), player.getKillerItem());
         }
 
@@ -83,16 +87,16 @@ public class Game {
 
         switch (i){
             case 1:
-                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.JOJO);
-                break;
-            case 2:
                 p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.SORAIA);
                 break;
+            case 2:
+                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.JOJO);
+                break;
             case 3:
-                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.RICARDO);
+                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.RITA);
                 break;
             case 4:
-                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.RITA);
+                p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.RICARDO);
                 break;
         }
     }
@@ -180,7 +184,17 @@ public class Game {
         }
     }
 
+    public boolean gameWin(){
+        return p1.getScore() >= 200;
+    }
 
+    public boolean gameOver(){
+        return p1.getHealth() <= 0;
+    }
+
+    public void restart(){
+
+    }
 }
 
 
