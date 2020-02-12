@@ -17,22 +17,22 @@ public class GameElementsFactory {
 
         switch(objectType) {
             case BEER:
-                object = new Beer(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.BEER.getLink()), speed);
+                object = new Beer(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.BEER.getLink()), speed, grid);
                 break;
             case CAR:
-                object = new Car(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.CAR.getLink()), speed);
+                object = new Car(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.CAR.getLink()), speed, grid);
                 break;
             case BRACKETS:
-                object = new Brackets(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.BRACKETS.getLink()), speed);
+                object = new Brackets(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.BRACKETS.getLink()), speed, grid);
                 break;
             case PINEAPPLE:
-                object = new Pineapple(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.PINEAPPLE.getLink()), speed);
+                object = new Pineapple(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.PINEAPPLE.getLink()), speed, grid);
                 break;
             case SUMARIZER:
-                object = new Sumarizer(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.SUMARIZER.getLink()), speed);
+                object = new Sumarizer(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.SUMARIZER.getLink()), speed, grid);
                 break;
             case BAD_DESIGN:
-                object = new BadDesign(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.BAD_DESIGN.getLink()), speed);
+                object = new BadDesign(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.BAD_DESIGN.getLink()), speed, grid);
                 break;
         }
         return object;
@@ -44,16 +44,16 @@ public class GameElementsFactory {
 
         switch (player) {
             case JOJO:
-                p1 = new Player(grid.makeGridPosition(grid.columnToX(30), grid.rowToY(29), PlayerType.JOJO.getLink()));
+                p1 = new Player(grid.makeGridPosition(grid.columnToX(grid.getCols()/2), grid.rowToY(29), PlayerType.JOJO.getLink()), grid);
                 break;
             case RICARDO:
-                p1 = new Player(grid.makeGridPosition(grid.columnToX(30), grid.rowToY(29),PlayerType.RICARDO.getLink()));
+                p1 = new Player(grid.makeGridPosition(grid.columnToX(grid.getCols()/2), grid.rowToY(29),PlayerType.RICARDO.getLink()), grid);
                 break;
             case SORAIA:
-                p1 = new Player(grid.makeGridPosition(grid.columnToX(30), grid.rowToY(29),PlayerType.SORAIA.getLink()));
+                p1 = new Player(grid.makeGridPosition(grid.columnToX(grid.getCols()/2), grid.rowToY(29),PlayerType.SORAIA.getLink()), grid);
                 break;
             case RITA:
-                p1 = new Player(grid.makeGridPosition(grid.columnToX(30), grid.rowToY(29),PlayerType.RITA.getLink()));
+                p1 = new Player(grid.makeGridPosition(grid.columnToX(grid.getCols()/2), grid.rowToY(29),PlayerType.RITA.getLink()), grid);
                 break;
         }
         return p1;
