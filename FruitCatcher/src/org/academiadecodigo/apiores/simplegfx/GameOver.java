@@ -51,4 +51,9 @@ public class GameOver {
         }
     }
 
+        public void restart(){
+
+        rectangle.delete();
+        grid.init();
+    }
 }
