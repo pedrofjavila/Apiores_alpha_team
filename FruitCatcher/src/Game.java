@@ -4,6 +4,7 @@ import org.academiadecodigo.apiores.gameelements.objects.ObjectType;
 import org.academiadecodigo.apiores.gameelements.players.Player;
 import org.academiadecodigo.apiores.gameelements.players.PlayerType;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
+import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
@@ -16,7 +17,7 @@ public class Game {
     private Player p1;
 
 
-    public Game(int cols, int rows, int delay){
+    public Game(int cols, int rows, int delay) {
         this.grid = new SimpleGfxGrid(cols, rows);
         this.delay = delay;
     }
@@ -29,30 +30,46 @@ public class Game {
         System.out.println(p1.getPosition().getRow());
 
 
-        for (int i = 0; i < gameobjects.length; i++){
+        for (int i = 0; i < gameobjects.length; i++) {
             gameobjects[i] = GameElementsFactory.createNewGameObject(grid);
             gameobjects[i].setGrid(grid);
         }
     }
 
-    public void start() throws InterruptedException{
+    public void start() throws InterruptedException {
 
-        while (true){
+        while (true) {
             Thread.sleep(delay);
 
             moveObjects();
         }
     }
 
-    public void moveObjects(){
-        for(int i = 0; i < gameobjects.length; i++){
+    public void moveObjects() {
+        for (int i = 0; i < gameobjects.length; i++) {
             gameobjects[i].move();
-            System.out.println(gameobjects[i].picture.getX());
-            System.out.println(gameobjects[i].picture.getY());
-            System.out.println(p1.getPosition().getPicture().getX());
-            System.out.println(p1.getPosition().getPicture().getY());
+            pickObj(gameobjects);
+          //  System.out.println(gameobjects[i].picture.getX());
+          //  System.out.println(gameobjects[i].picture.getY());
+          //  System.out.println(p1.getPosition().getPicture().getX());
+          //  System.out.println(p1.getPosition().getPicture().getY());
+            System.out.println(pickObj(gameobjects));
         }
     }
 
 
+    public boolean pickObj(GameObject[] gameObject) {
+
+        for (GameObject gameObj : gameobjects) {
+
+            if (gameObj.getPos().getCol() == p1.getPosition().getPicture().getX() && (gameObj.getPos().getRow() == p1.getPosition().getPicture().getY())){
+
+                return true;
+            }
+
+        }
+
+        return false;
+
+    }
 }

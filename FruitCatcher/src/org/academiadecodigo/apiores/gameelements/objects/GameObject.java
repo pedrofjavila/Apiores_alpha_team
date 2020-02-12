@@ -21,7 +21,7 @@ public abstract class GameObject implements Catchable {
         this.speed = speed;
     }
 
-    public  SimpleGfxGridPosition getPos(){
+    public SimpleGfxGridPosition getPos() {
         return pos;
     }
 
@@ -40,20 +40,20 @@ public abstract class GameObject implements Catchable {
     //boundaries and object movement!
 
 
-
-    public void move(){
-        if(this.pos.getRow() < 890) {
+    public void move() {
+        if (this.pos.getRow() < 890) {
             picture.translate(0, speed);
             pos.setRow(pos.getRow() + speed);
             //System.out.println(pos.getRow());
             //System.out.println(pos.getCol());
-        }else{
-            int randomCol = (int) (Math.random()*(1789 - 10) + 10);
+        } else {
+            int randomCol = (int) (Math.random() * (1789 - 10) + 10);
             picture.translate(randomCol - pos.getCol(), -900);
             this.pos.setRow(10);
             this.pos.setCol(randomCol);
-            speed = (int) (Math.random()*(65 - 20) + 20);
+            speed = (int) (Math.random() * (65 - 20) + 20);
 
         }
     }
+
 }
