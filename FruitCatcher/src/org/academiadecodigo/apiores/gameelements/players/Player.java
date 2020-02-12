@@ -109,15 +109,15 @@ public class Player  {
                 case KeyboardEvent.KEY_LEFT:
                     if(position.getCol()> 10) {
                         player.translate(-30, 0);
+                        position.rectangle.translate(-30, 0);
                         position.setPos(position.getCol() - 30, 0);
-                        //System.out.println(position.getCol());
                         break;
                     }
                 case KeyboardEvent.KEY_RIGHT:
-                    if(position.getCol()< 1780) {
+                    if(position.getCol() < 1780) {
                         player.translate(30, 0);
+                        position.rectangle.translate(30, 0);
                         position.setPos(position.getCol() + 30, 0);
-                        //System.out.println(position.getCol());
                         break;
                     }
 
