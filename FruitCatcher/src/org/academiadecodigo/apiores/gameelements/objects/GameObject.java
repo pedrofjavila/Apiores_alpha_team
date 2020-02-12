@@ -5,7 +5,7 @@ import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public abstract class GameObject implements Catchable {
+public abstract class GameObject {
 
     public SimpleGfxGridPosition pos;
     public SimpleGfxGrid grid;
@@ -42,7 +42,7 @@ public abstract class GameObject implements Catchable {
 
 
     public void move(){
-        if(this.pos.getRow() < 890) {
+        if(this.pos.getRow() < 910) {
             picture.translate(0, speed);
             pos.setRow(pos.getRow() + speed);
             //System.out.println(pos.getRow());

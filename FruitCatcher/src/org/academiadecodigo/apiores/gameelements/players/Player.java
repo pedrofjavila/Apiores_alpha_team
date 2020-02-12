@@ -20,8 +20,8 @@ public class Player  {
     private PlayerType type;
     private SimpleGfxGridPosition position;
     private SimpleGfxGrid grid;
-    private GridDirection currentDirection;
-    private int speed;
+
+
 
 
     public Player (SimpleGfxGridPosition position){
@@ -110,14 +110,14 @@ public class Player  {
                     if(position.getCol()> 10) {
                         player.translate(-30, 0);
                         position.setPos(position.getCol() - 30, 0);
-                        System.out.println(position.getCol());
+                        //System.out.println(position.getCol());
                         break;
                     }
                 case KeyboardEvent.KEY_RIGHT:
                     if(position.getCol()< 1780) {
                         player.translate(30, 0);
                         position.setPos(position.getCol() + 30, 0);
-                        System.out.println(position.getCol());
+                        //System.out.println(position.getCol());
                         break;
                     }
 
