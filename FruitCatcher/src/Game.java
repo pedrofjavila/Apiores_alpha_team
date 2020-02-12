@@ -49,9 +49,15 @@ public class Game {
             gameobjects[i].move();
             System.out.println(gameobjects[i].picture.getX());
             System.out.println(gameobjects[i].picture.getY());
-            System.out.println(p1.getPosition().getPicture().getX());
-            System.out.println(p1.getPosition().getPicture().getY());
+            System.out.println("player X "+p1.getPosition().getPicture().getX());
+            System.out.println("player y "+p1.getPosition().getPicture().getY());
+        if ((p1.getPosition().getPicture().getX()==1570 &&gameobjects[i].picture.getX()==1570) &&
+        p1.getPosition().getPicture().getY()==gameobjects[i].picture.getY()){
+            int randomCol = (int) (Math.random()*(1789 - 10) + 10);
+            gameobjects[i].picture.translate(randomCol - gameobjects[i].picture.getY(), -900);
         }
+        }
+
     }
 
 
