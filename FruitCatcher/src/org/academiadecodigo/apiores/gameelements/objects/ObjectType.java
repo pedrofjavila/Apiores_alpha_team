@@ -5,7 +5,7 @@ public enum ObjectType {
     CAR("resources/carro.png"),
     BRACKETS("resources/chaveta.png"),
     BAD_DESIGN("resources/bad_design.png"),
-    SUMARIZER("resources/chaveta.png"),
+    SUMARIZER("resources/summarizer.png"),
     PINEAPPLE("resources/nanas.png");
 
 
