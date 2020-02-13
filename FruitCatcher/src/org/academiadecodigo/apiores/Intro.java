@@ -17,19 +17,17 @@ public class Intro {
     private SimpleGfxGrid grid;
     private KeyboardListener keyboard;
     private SimpleGfxGridPosition position;
-    private Rectangle rectangle;
+    private Picture backGroung = new Picture(10,10, "resources/tela_abertura_900_930_v02.png");
     private int keyPressed = 0;
 
     public Intro(SimpleGfxGrid grid) {
         this.grid = grid;
         keyboard = new KeyboardListener();
-        rectangle = new Rectangle(10,10, grid.getWidth(), grid.getHeigth());
     }
 
     public void init() {
         while (keyPressed == 0) {
-            rectangle.setColor(Color.BLACK);
-            rectangle.fill();
+            backGroung.draw();
         }
     }
 
@@ -75,26 +73,39 @@ public class Intro {
             switch (keyboardEvent.getKey()){
                 case KeyboardEvent.KEY_1:
                     keyPressed = 1;
-                    rectangle.delete();
+                    backGroung.delete();
                     break;
                 case KeyboardEvent.KEY_2:
                     keyPressed = 2;
-                    rectangle.delete();
+                    backGroung.delete();
                     break;
                 case KeyboardEvent.KEY_3:
                     keyPressed = 3;
-                    rectangle.delete();
+                    backGroung.delete();
                     break;
                 case KeyboardEvent.KEY_4:
                     keyPressed = 4;
-                    rectangle.delete();
+                    backGroung.delete();
                     break;
             }
         }
 
         @Override
         public void keyReleased(KeyboardEvent keyboardEvent) {
-
+            switch (keyboardEvent.getKey()){
+                case KeyboardEvent.KEY_1:
+                    keyPressed = 0;
+                    break;
+                case KeyboardEvent.KEY_2:
+                    keyPressed = 0;
+                    break;
+                case KeyboardEvent.KEY_3:
+                    keyPressed = 0;
+                    break;
+                case KeyboardEvent.KEY_4:
+                    keyPressed = 0;
+                    break;
+            }
         }
     }
 }

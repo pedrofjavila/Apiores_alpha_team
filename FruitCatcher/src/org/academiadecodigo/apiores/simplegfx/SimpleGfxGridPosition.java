@@ -1,11 +1,9 @@
 package org.academiadecodigo.apiores.simplegfx;
 
-import org.academiadecodigo.apiores.gameelements.grid.GridDirection;
-import org.academiadecodigo.simplegraphics.graphics.Color;
+
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-import java.awt.*;
 
 public class SimpleGfxGridPosition {
 
@@ -14,7 +12,7 @@ public class SimpleGfxGridPosition {
     private SimpleGfxGrid grid;
     private Picture picture;
     private SimpleGfxGrid simpleGfxGrid;
-    public Rectangle rectangle;
+
 
 
     public SimpleGfxGridPosition(SimpleGfxGrid grid, String link){
@@ -27,8 +25,6 @@ public class SimpleGfxGridPosition {
         int y = simpleGfxGrid.rowToY(row);
 
         picture = new Picture(x, y, link);
-        this.rectangle = new Rectangle(picture.getX(), picture.getY(), picture.getWidth(), picture.getHeight()); //hitboxtest
-        this.rectangle.setColor(Color.BLUE);
         show();
     }
 
@@ -42,8 +38,6 @@ public class SimpleGfxGridPosition {
         int y = simpleGfxGrid.rowToY(this.row);
 
         picture = new Picture(col, row, link);
-        this.rectangle = new Rectangle(picture.getX(), picture.getY(), picture.getWidth(), picture.getHeight()); //hitbox test
-        this.rectangle.setColor(Color.BLUE);
         show();
 
     }
@@ -58,7 +52,6 @@ public class SimpleGfxGridPosition {
 
     public void show() {
         this.picture.draw();
-        this.rectangle.draw();
 
     }
 

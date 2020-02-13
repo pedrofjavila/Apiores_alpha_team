@@ -1,6 +1,7 @@
 package org.academiadecodigo.apiores.gameelements.players;
 
 import org.academiadecodigo.apiores.gameelements.grid.GridDirection;
+import org.academiadecodigo.apiores.gameelements.objects.ObjectType;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
 import org.academiadecodigo.simplegraphics.graphics.Movable;
@@ -16,18 +17,27 @@ public class Player  {
     private boolean alive = true;
     private KeyboardListener keyboard;
     private int score;
+    private int health = 50;
     private Picture picture;
     private PlayerType type;
     private SimpleGfxGridPosition position;
     private SimpleGfxGrid grid;
+    private ObjectType itemScorer;
+    private ObjectType itemScorer2;
+    private ObjectType killerItem;
 
 
 
 
-    public Player (SimpleGfxGridPosition position, SimpleGfxGrid grid){
+
+    public Player (SimpleGfxGridPosition position, SimpleGfxGrid grid, PlayerType type,ObjectType itemScorer, ObjectType itemScorer2, ObjectType killerItem){
         this.position= position;
         this.keyboard = new KeyboardListener(this.position.getPicture());
         this.grid = grid;
+        this.type = type;
+        this.itemScorer = itemScorer;
+        this.itemScorer2 = itemScorer2;
+        this.killerItem = killerItem;
 
 
     }
@@ -42,6 +52,19 @@ public class Player  {
         this.grid = grid;
     }
 
+
+    public ObjectType getItemScorer() {
+        return itemScorer;
+    }
+
+    public ObjectType getItemScorer2() {
+        return itemScorer2;
+    }
+
+    public ObjectType getKillerItem() {
+        return killerItem;
+    }
+
     public boolean isAlive(){
         return alive;
     }
@@ -54,8 +77,24 @@ public class Player  {
         return score;
     }
 
-    public void setScore(int score) {
-        this.score += score;
+    public void healthDecrement() {
+        if(health ==0){
+            position.getPicture().delete();
+            return;
+        }
+        health-=30;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void kill(){
+        health = 0;
+    }
+
+    public void setScore() {
+        score+=20;
     }
 
     // check if needed, if not to delete
@@ -110,14 +149,12 @@ public class Player  {
                 case KeyboardEvent.KEY_LEFT:
                     if(position.getCol()> 10) {
                         player.translate(-30, 0);
-                        position.rectangle.translate(-30, 0);
                         position.setPos(position.getCol() - 30, 0);
                         break;
                     }
                 case KeyboardEvent.KEY_RIGHT:
                     if(position.getCol() < grid.getWidth() - 20 ) {
                         player.translate(30, 0);
-                        position.rectangle.translate(30, 0);
                         position.setPos(position.getCol() + 30, 0);
                         break;
                     }
