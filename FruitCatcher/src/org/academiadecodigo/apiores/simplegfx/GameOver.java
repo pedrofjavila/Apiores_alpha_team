@@ -1,10 +1,6 @@
 package org.academiadecodigo.apiores.simplegfx;
 
-import org.academiadecodigo.apiores.Intro;
 import org.academiadecodigo.apiores.Sound;
-import org.academiadecodigo.apiores.gameelements.players.Player;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;

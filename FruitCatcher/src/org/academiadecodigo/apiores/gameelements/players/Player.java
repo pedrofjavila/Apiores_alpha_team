@@ -9,7 +9,6 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
-//turned public
 public class Player  {
 
     private KeyboardListener keyboard;
@@ -21,7 +20,6 @@ public class Player  {
     private ObjectType itemScorer;
     private ObjectType itemScorer2;
     private ObjectType killerItem;
-
 
     public Player (SimpleGfxGridPosition position, SimpleGfxGrid grid, PlayerType type,ObjectType itemScorer, ObjectType itemScorer2, ObjectType killerItem){
         this.position= position;
@@ -83,7 +81,6 @@ public class Player  {
         return type;
     }
 
-        //nested keyboardListener Class;
 
     public class KeyboardListener implements KeyboardHandler {
         private Movable player;
@@ -94,18 +91,15 @@ public class Player  {
 
             Keyboard keyboard = new Keyboard(this);
 
-            //Move right
             KeyboardEvent right = new KeyboardEvent();
             right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             right.setKey(KeyboardEvent.KEY_RIGHT);
             keyboard.addEventListener(right);
 
-            //Move left
             KeyboardEvent left = new KeyboardEvent();
             left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             left.setKey(KeyboardEvent.KEY_LEFT);
             keyboard.addEventListener(left);
-
         }
 
         @Override

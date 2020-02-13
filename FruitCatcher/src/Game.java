@@ -64,7 +64,7 @@ public class Game {
             while (true) {
                 if (gameWin() || gameOver()) {
                     gameMusic.stop();
-                    restart(); //WIN RESTART
+                    restart();
                     p1 = null;
                     break;
                 }
@@ -86,8 +86,6 @@ public class Game {
             gameObjects[i] = GameElementsFactory.createNewGameObject(grid, scorer, scorer2, killer);
             gameObjects[i].setGrid(grid);
         }
-
-
     }
 
     public void itemSetter(Player player){
@@ -98,13 +96,14 @@ public class Game {
         if(player.getType() == PlayerType.JOJO){
             itemFiller(player.getItemScorer(), player.getItemScorer2(), player.getKillerItem());
         }
+
         if(player.getType() == PlayerType.RITA){
             itemFiller(player.getItemScorer(), player.getItemScorer2(), player.getKillerItem());
         }
+
         if(player.getType() == PlayerType.RICARDO){
             itemFiller(player.getItemScorer(), player.getItemScorer2(), player.getKillerItem());
         }
-
     }
 
     public void createPlayer(int i){
@@ -131,10 +130,9 @@ public class Game {
 
             object.move();
 
-
             if(Game.Collides(p1.getPosition().getPicture(), object.getPos().getPicture())){
                 scoreChanger(gameObjects[i]);
-                gameObjects[i].getHitSound().setLoop(1);
+                gameObjects[i].getHitSound().setLoop(0);
                 object.getPos().getPicture().delete();
                 moveObjects();
                 object.getPos().getPicture().draw();
@@ -206,13 +204,11 @@ public class Game {
     }
 
     public boolean gameWin(){
-        return p1.getScore() >= 200;
+        return p1.getScore() >= 300;
     }
 
     public boolean gameOver(){
-
         return p1.getHealth() <= 0;
-
     }
 
     public void restart() throws InterruptedException {
@@ -227,14 +223,11 @@ public class Game {
             gameOver.winInit();
         }
 
-
         gameOver.init();
         init();
         start();
         hud.draw();
-
     }
-
 }
 
 
