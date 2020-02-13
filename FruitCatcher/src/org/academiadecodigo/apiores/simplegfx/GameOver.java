@@ -26,17 +26,15 @@ public class GameOver {
     }
 
     public void init() {
-            soundgameover.setLoop(2);
+        soundgameover.setLoop(2);
 
         while (!keyPressed) {
             backGroung.draw();
 
         }
-
+        soundgameover.stop();
         backGroung.delete();
-
     }
-
 
     public class KeyboardListener implements KeyboardHandler {
 
@@ -49,7 +47,6 @@ public class GameOver {
             keyR.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             keyR.setKey(KeyboardEvent.KEY_R);
             keyboard.addEventListener(keyR);
-
 
         }
 

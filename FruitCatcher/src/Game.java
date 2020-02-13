@@ -20,14 +20,15 @@ public class Game {
     private Player p1;
     private Intro intro;
     private GameOver gameOver;
+
     private Picture sky;
     private Picture grass;
-    private Picture hud = new Picture(10, 80, "resources/banners_pontuacao.png");
+    private Picture hud;
+
     private Text health;
     private Text score;
 
-
-
+    private Sound gameMusic = new Sound(" resources/sounds/musica_fundo.wav");
 
     public Game(int cols, int rows, int delay) {
         this.grid = new SimpleGfxGrid(cols, rows);
@@ -35,12 +36,9 @@ public class Game {
     }
 
     public void init() {
-
         grid.init();
         intro = new Intro(grid);
         gameOver = new GameOver(grid);
-
-
     }
 
     public void start() throws InterruptedException {
@@ -48,32 +46,29 @@ public class Game {
         intro.init();
         gameObjects = new GameObject[numberOfObjects];
 
-
-
         sky = new Picture(10,10, "resources/top.png");
         grass = new Picture(10, grid.getHeigth() -10, "resources/bottom.png");
-
-
         sky.draw();
         grass.draw();
+
         createPlayer(intro.getKeyPressed());
         itemSetter(p1);
-
+        hud = new Picture(10, 80, "resources/banners_pontuacao.png");
         health =  new Text(75,169, ""+ p1.getHealth());
         score = new Text(75,99, "" + p1.getScore());
         health.setColor(Color.WHITE);
         score.setColor(Color.WHITE);
 
-
-
-
+        gameMusic.play(true);
 
             while (true) {
                 if (gameWin()) {
+                    gameMusic.stop();
                     restart(); //WIN RESTART
                     p1 = null;
                     break;
                 } else if(gameOver()){
+                    gameMusic.stop();
                     restart();
                     p1 = null;
                     break;
@@ -88,8 +83,6 @@ public class Game {
             }
     }
 
-
-
     public void itemFiller(ObjectType scorer, ObjectType scorer2, ObjectType killer){
 
         for (int i = 0; i < gameObjects.length; i++) {
@@ -97,8 +90,6 @@ public class Game {
             gameObjects[i] = GameElementsFactory.createNewGameObject(grid, scorer, scorer2, killer);
             gameObjects[i].setGrid(grid);
         }
-
-
     }
 
     public void itemSetter(Player player){
@@ -115,7 +106,6 @@ public class Game {
         if(player.getType() == PlayerType.RICARDO){
             itemFiller(player.getItemScorer(), player.getItemScorer2(), player.getKillerItem());
         }
-
     }
 
     public void createPlayer(int i){
@@ -136,9 +126,6 @@ public class Game {
         }
     }
 
-
-
-
     public void moveObjects()  {
         for (int i = 0; i < gameObjects.length; i++) {
             GameObject object = gameObjects[i];
@@ -152,15 +139,12 @@ public class Game {
         }
     }
 
-
-
     private static boolean Collides(Picture p1, Picture p2){
 
         return ((p2.getX() > p1.getX() && p2.getX() < p1.getX()+p1.getWidth()) &&
                 (p2.getY() > p1.getY() && p2.getY() < p1.getY()+p1.getHeight())) ||
                 ((p2.getX()+p2.getWidth() > p1.getX() && p2.getX()+p2.getWidth() < p1.getX()+p1.getWidth())) &&
                  (p2.getY() > p1.getY() && p2.getY() < p1.getY()+p1.getHeight());
-
     }
 
     public void scoreChanger(GameObject obj){
@@ -223,9 +207,7 @@ public class Game {
     }
 
     public boolean gameOver(){
-
         return p1.getHealth() <= 0;
-
     }
 
     public void restart() throws InterruptedException {
@@ -233,12 +215,10 @@ public class Game {
         for(GameObject object : gameObjects){
             object.picture.delete();
         }
-
         gameOver.init();
         init();
         start();
         hud.draw();
-
     }
 }
 

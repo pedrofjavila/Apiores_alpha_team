@@ -6,17 +6,15 @@ import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
 
 public class GameElementsFactory {
 
-    private PlayerType player;
-
     public static GameObject createNewGameObject(SimpleGfxGrid grid, ObjectType scorer, ObjectType healthDecrement, ObjectType killer){
 
         int randomObject = (int) (Math.random() * 20);
         int i;
         if(randomObject > 10){
             i = 2;
-        }else if(randomObject<5){
+        } else if(randomObject<5){
             i=1;
-        }else{
+        } else {
             i=0;
         }
 
@@ -75,6 +73,4 @@ public class GameElementsFactory {
         }
         return p1;
     }
-
-
 }

@@ -1,7 +1,5 @@
 package org.academiadecodigo.apiores.gameelements.players;
 
-import org.academiadecodigo.apiores.Sound;
-import org.academiadecodigo.apiores.gameelements.grid.GridDirection;
 import org.academiadecodigo.apiores.gameelements.objects.ObjectType;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
@@ -10,7 +8,6 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 //turned public
 public class Player  {
@@ -35,8 +32,6 @@ public class Player  {
         this.itemScorer2 = itemScorer2;
         this.killerItem = killerItem;
         health = 50;
-
-
     }
 
     public void setGrid(SimpleGfxGrid grid) {
@@ -70,15 +65,11 @@ public class Player  {
 
     public void kill(){
         health = 0;
-
-     //   soundGameover.close();
     }
 
     public void setScore() {
         score+=20;
     }
-
-
 
     public SimpleGfxGrid getGrid() {
         return grid;
@@ -91,7 +82,6 @@ public class Player  {
     public PlayerType getType() {
         return type;
     }
-
 
         //nested keyboardListener Class;
 
@@ -116,7 +106,6 @@ public class Player  {
             left.setKey(KeyboardEvent.KEY_LEFT);
             keyboard.addEventListener(left);
 
-
         }
 
         @Override
@@ -136,18 +125,13 @@ public class Player  {
                         position.setPos(position.getCol() + 20, 0);
                         break;
                     }
-
             }
         }
         @Override
         public void keyReleased (KeyboardEvent keyboardEvent){
 
         }
-
-
     }
-
-
 }
 
 

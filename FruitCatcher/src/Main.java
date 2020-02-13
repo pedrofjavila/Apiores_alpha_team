@@ -6,12 +6,7 @@ public class Main {
 
         Game game = new Game(30, 31, 150);
 
-
-
         game.init();
-
         game.start();
     }
-
-
 }

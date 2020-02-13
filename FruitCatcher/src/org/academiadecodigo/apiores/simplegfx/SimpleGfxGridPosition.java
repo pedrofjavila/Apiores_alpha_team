@@ -9,11 +9,8 @@ public class SimpleGfxGridPosition {
 
     private int col;
     private int row;
-    private SimpleGfxGrid grid;
     private Picture picture;
     private SimpleGfxGrid simpleGfxGrid;
-
-
 
     public SimpleGfxGridPosition(SimpleGfxGrid grid, String link){
         this.col = (int)(Math.random() * grid.getCols());
@@ -34,12 +31,8 @@ public class SimpleGfxGridPosition {
 
         simpleGfxGrid = grid;
 
-        int x = simpleGfxGrid.columnToX(this.col);
-        int y = simpleGfxGrid.rowToY(this.row);
-
         picture = new Picture(col, row, link);
         show();
-
     }
 
     public void setPos(int col, int row){
@@ -48,11 +41,8 @@ public class SimpleGfxGridPosition {
         show();
     }
 
-
-
     public void show() {
         this.picture.draw();
-
     }
 
     public int getCol() {
@@ -69,10 +59,6 @@ public class SimpleGfxGridPosition {
 
     public void setRow(int row) {
         this.row = row;
-    }
-
-    public void setPicture(Picture picture) {
-        this.picture = picture;
     }
 
     public Picture getPicture() {
