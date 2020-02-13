@@ -5,11 +5,7 @@ import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
 
 public class Brackets extends GameObject{
 
-
     public Brackets(SimpleGfxGridPosition position, int speed, SimpleGfxGrid grid, ObjectType type){
-
         super(position, speed, grid, type);
-
     }
-
 }

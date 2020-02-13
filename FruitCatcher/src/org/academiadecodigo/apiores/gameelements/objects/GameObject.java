@@ -1,6 +1,5 @@
 package org.academiadecodigo.apiores.gameelements.objects;
 
-import org.academiadecodigo.apiores.gameelements.grid.GridDirection;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
@@ -10,7 +9,6 @@ public abstract class GameObject {
     public SimpleGfxGridPosition pos;
     public SimpleGfxGrid grid;
     public Picture picture;
-    protected GridDirection direction;
     public int speed;
     private ObjectType type;
 
@@ -29,10 +27,6 @@ public abstract class GameObject {
 
     public void setGrid(SimpleGfxGrid grid) {
         this.grid = grid;
-    }
-
-    public int getSpeed() {
-        return speed;
     }
 
     public ObjectType getType() {

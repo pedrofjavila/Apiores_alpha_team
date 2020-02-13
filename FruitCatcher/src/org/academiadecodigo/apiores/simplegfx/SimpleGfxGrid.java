@@ -22,10 +22,6 @@ public class SimpleGfxGrid {
         background.draw();
     }
 
-    public int getCellSize() {
-        return cellSize;
-    }
-
     public int getCols() {
         return cols;
     }
@@ -42,20 +38,8 @@ public class SimpleGfxGrid {
         return this.background.getHeight();
     }
 
-    public int getX(){
-        return this.background.getWidth();
-    }
-
-    public int getY(){
-        return this.background.getWidth();
-    }
-
     public SimpleGfxGridPosition makeGridPosition(int col, int row, String link) {
         return new SimpleGfxGridPosition(col, row, this, link);
-    }
-
-    public SimpleGfxGridPosition makeGridPosition(String link){
-        return new SimpleGfxGridPosition(this, link);
     }
 
     public int columnToX(int column) {
