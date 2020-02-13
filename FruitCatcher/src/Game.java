@@ -4,9 +4,8 @@ import org.academiadecodigo.apiores.gameelements.objects.GameObject;
 import org.academiadecodigo.apiores.gameelements.objects.ObjectType;
 import org.academiadecodigo.apiores.gameelements.players.Player;
 import org.academiadecodigo.apiores.gameelements.players.PlayerType;
+import org.academiadecodigo.apiores.simplegfx.GameOver;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game {
@@ -17,9 +16,11 @@ public class Game {
     private int numberOfObjects = 5;
     private Player p1;
     private Intro intro;
+    private GameOver gameOver;
 
     public Game(int cols, int rows, int delay) {
         this.grid = new SimpleGfxGrid(cols, rows);
+        this.gameOver = new GameOver(grid);
         this.delay = delay;
     }
 
@@ -27,30 +28,27 @@ public class Game {
 
         grid.init();
         intro = new Intro(grid);
-        gameobjects = new GameObject[numberOfObjects];
-        System.out.println(grid.getWidth());
-        System.out.println(grid.getHeigth());
+
     }
 
     public void start() throws InterruptedException {
 
         intro.init();
+        gameobjects = new GameObject[numberOfObjects];
         createPlayer(intro.getKeyPressed());
         itemSetter(p1);
 
             while (true) {
                 if (gameWin() || gameOver()) {
+
+                    p1 = null;
                     break;
                 }
                 Thread.sleep(delay);
-
                 moveObjects();
             }
-            while(true) {
+            restart();
 
-                init();
-                start();
-            }
     }
 
 
@@ -150,7 +148,7 @@ public class Game {
                 p1.setScore();
             }
             if(obj.getType() == ObjectType.CAR){
-                p1.healthDecrement();
+                p1.setScore();
             }
             if(obj.getType() == ObjectType.PINEAPPLE){
                 p1.killRita();
@@ -192,7 +190,15 @@ public class Game {
         return p1.getHealth() <= 0;
     }
 
-    public void restart(){
+    public void restart() throws InterruptedException {
+
+        for(GameObject object : gameobjects){
+            object.picture.delete();
+        }
+
+        gameOver.init();
+        init();
+        start();
 
     }
 }

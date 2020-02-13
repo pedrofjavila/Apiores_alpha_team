@@ -78,6 +78,9 @@ public class Player  {
     }
 
     public void healthDecrement() {
+        if(health ==0){
+            position.getPicture().delete();
+        }
         health--;
     }
 

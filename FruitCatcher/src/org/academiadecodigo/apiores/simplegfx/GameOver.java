@@ -1,59 +1,66 @@
 package org.academiadecodigo.apiores.simplegfx;
 
+import org.academiadecodigo.apiores.Intro;
 import org.academiadecodigo.apiores.gameelements.players.Player;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class GameOver {
 
+        private SimpleGfxGrid grid;
+        private KeyboardListener keyboard;
+        private Picture backGroung = new Picture(10,10, "resources/tela_abertura_900_930.png");;
+        private boolean keyPressed = false;
 
-    private SimpleGfxGrid grid;
-    private Rectangle rectangle;
-
-
-    public GameOver() {
-
-        rectangle = new Rectangle(10, 10, grid.getWidth(), grid.getHeigth());
-    }
-
-    public void endGame() {
-
-    }
-
-    public class KeyboardListener implements KeyboardHandler {
-
-        public KeyboardListener() {
-
-            Keyboard keyboard = new Keyboard(this);
-
-            //Restart
-            KeyboardEvent r = new KeyboardEvent();
-            r.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-            r.setKey(KeyboardEvent.KEY_R);
-            keyboard.addEventListener(r);
-
+        public GameOver(SimpleGfxGrid grid) {
+            this.grid = grid;
+            keyboard = new KeyboardListener();
         }
 
-        @Override
-        public void keyPressed(KeyboardEvent keyboardEvent) {
-
-            if (keyboardEvent.getKey() == 1) {
-                rectangle.delete();
+        public void init() {
+            while (!keyPressed) {
+                backGroung.draw();
             }
         }
 
-        @Override
-        public void keyReleased(KeyboardEvent keyboardEvent) {
+        public class KeyboardListener implements KeyboardHandler {
 
+            public KeyboardListener() {
+
+                Keyboard keyboard = new Keyboard(this);
+
+                //Choice 1
+                KeyboardEvent keyR = new KeyboardEvent();
+                keyR.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+                keyR.setKey(KeyboardEvent.KEY_R);
+                keyboard.addEventListener(keyR);
+
+
+            }
+
+            @Override
+            public void keyPressed(KeyboardEvent keyboardEvent) {
+                    switch(keyboardEvent.getKey()){
+                        case KeyboardEvent.KEY_R:
+                            keyPressed = true;
+                            backGroung.delete();
+                            break;
+                    }
+            }
+
+            @Override
+            public void keyReleased(KeyboardEvent keyboardEvent) {
+                switch(keyboardEvent.getKey()){
+                    case KeyboardEvent.KEY_R:
+                        keyPressed = false;
+                        break;
+                }
+
+            }
         }
     }
-
-        public void restart(){
-
-        rectangle.delete();
-        grid.init();
-    }
-}

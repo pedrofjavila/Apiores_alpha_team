@@ -17,13 +17,12 @@ public class Intro {
     private SimpleGfxGrid grid;
     private KeyboardListener keyboard;
     private SimpleGfxGridPosition position;
-    private Picture backGroung;
+    private Picture backGroung = new Picture(10,10, "resources/tela_abertura_900_930.png");;
     private int keyPressed = 0;
 
     public Intro(SimpleGfxGrid grid) {
         this.grid = grid;
         keyboard = new KeyboardListener();
-        backGroung = new Picture(10,10, "resources/tela_abertura_900_930.png");
     }
 
     public void init() {
@@ -93,7 +92,20 @@ public class Intro {
 
         @Override
         public void keyReleased(KeyboardEvent keyboardEvent) {
-
+            switch (keyboardEvent.getKey()){
+                case KeyboardEvent.KEY_1:
+                    keyPressed = 0;
+                    break;
+                case KeyboardEvent.KEY_2:
+                    keyPressed = 0;
+                    break;
+                case KeyboardEvent.KEY_3:
+                    keyPressed = 0;
+                    break;
+                case KeyboardEvent.KEY_4:
+                    keyPressed = 0;
+                    break;
+            }
         }
     }
 }
