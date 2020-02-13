@@ -1,3 +1,5 @@
+import org.academiadecodigo.apiores.Sound;
+
 public class Main {
 
     public static void main(String[] args) throws InterruptedException{
@@ -7,6 +9,7 @@ public class Main {
 
 
         game.init();
+
         game.start();
     }
 

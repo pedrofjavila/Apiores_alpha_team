@@ -1,4 +1,5 @@
 import org.academiadecodigo.apiores.Intro;
+import org.academiadecodigo.apiores.Sound;
 import org.academiadecodigo.apiores.gameelements.GameElementsFactory;
 import org.academiadecodigo.apiores.gameelements.objects.GameObject;
 import org.academiadecodigo.apiores.gameelements.objects.ObjectType;
@@ -22,6 +23,7 @@ public class Game {
     private Picture grass;
     private Text health;
     private Text score;
+    private Sound sound;
 
     public Game(int cols, int rows, int delay) {
         this.grid = new SimpleGfxGrid(cols, rows);
@@ -156,6 +158,7 @@ public class Game {
 
             if(obj.getType() == ObjectType.BEER){
                 p1.setScore();
+
             }
             if(obj.getType() == ObjectType.BRACKETS){
                 p1.kill();
