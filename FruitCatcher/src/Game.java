@@ -138,7 +138,9 @@ public class Game {
 
             if(Game.Collides(p1.getPosition().getPicture(), object.getPos().getPicture())){
                 scoreChanger(gameObjects[i]);
+                object.getPos().getPicture().delete();
                 moveObjects();
+                object.getPos().getPicture().draw();
             }
         }
     }

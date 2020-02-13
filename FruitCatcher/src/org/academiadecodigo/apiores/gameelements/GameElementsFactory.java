@@ -26,7 +26,7 @@ public class GameElementsFactory {
 
         ObjectType objectType = playerObjects[i];
         int randomCol = (int) (Math.random() * grid.getCols());
-        int speed = (int) (Math.random()*(50- 30) + 30);
+        int speed = (int) (Math.random()*(50 - 30) + 30);
 
         GameObject object = null;
 
