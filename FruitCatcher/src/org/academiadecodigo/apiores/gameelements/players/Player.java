@@ -1,5 +1,6 @@
 package org.academiadecodigo.apiores.gameelements.players;
 
+import org.academiadecodigo.apiores.Sound;
 import org.academiadecodigo.apiores.gameelements.grid.GridDirection;
 import org.academiadecodigo.apiores.gameelements.objects.ObjectType;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
@@ -25,7 +26,7 @@ public class Player  {
     private ObjectType itemScorer;
     private ObjectType itemScorer2;
     private ObjectType killerItem;
-
+    private Sound soundGameover = new Sound(" resources/sounds/gameover_ok.wav");
 
 
 
@@ -91,6 +92,11 @@ public class Player  {
 
     public void kill(){
         health = 0;
+        soundGameover.play(true);
+        soundGameover.setLoop(2);
+
+
+     //   soundGameover.close();
     }
 
     public void setScore() {

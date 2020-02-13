@@ -23,7 +23,7 @@ public class Game {
     private Picture grass;
     private Text health;
     private Text score;
-    private Sound sound;
+   // private Sound soundgameover = new Sound("resources/sounds/gameover_ok.wav ");
 
     public Game(int cols, int rows, int delay) {
         this.grid = new SimpleGfxGrid(cols, rows);
@@ -213,7 +213,9 @@ public class Game {
     }
 
     public boolean gameOver(){
+
         return p1.getHealth() <= 0;
+
     }
 
     public void restart() throws InterruptedException {
