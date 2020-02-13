@@ -12,9 +12,9 @@ public class GameElementsFactory {
 
         int randomObject = (int) (Math.random() * 20);
         int i;
-        if(randomObject > 5){
+        if(randomObject > 10){
             i = 2;
-        }else if(randomObject<2.5){
+        }else if(randomObject<5){
             i=1;
         }else{
             i=0;
@@ -28,7 +28,7 @@ public class GameElementsFactory {
 
         ObjectType objectType = playerObjects[i];
         int randomCol = (int) (Math.random() * grid.getCols());
-        int speed = (int) (Math.random()*(65 - 20) + 20);
+        int speed = (int) (Math.random()*(10 - 5) + 5);
 
         GameObject object = null;
 

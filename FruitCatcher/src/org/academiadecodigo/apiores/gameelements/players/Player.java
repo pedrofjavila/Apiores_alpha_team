@@ -154,14 +154,14 @@ public class Player  {
 
                 case KeyboardEvent.KEY_LEFT:
                     if(position.getCol()> 10) {
-                        player.translate(-30, 0);
-                        position.setPos(position.getCol() - 30, 0);
+                        player.translate(-20, 0);
+                        position.setPos(position.getCol() - 20, 0);
                         break;
                     }
                 case KeyboardEvent.KEY_RIGHT:
                     if(position.getCol() < grid.getWidth() - 20 ) {
-                        player.translate(30, 0);
-                        position.setPos(position.getCol() + 30, 0);
+                        player.translate(20, 0);
+                        position.setPos(position.getCol() + 20, 0);
                         break;
                     }
 
