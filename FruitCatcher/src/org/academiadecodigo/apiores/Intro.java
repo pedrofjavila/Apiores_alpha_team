@@ -17,22 +17,29 @@ public class Intro {
     private SimpleGfxGrid grid;
     private KeyboardListener keyboard;
     private SimpleGfxGridPosition position;
-    private Picture backGroung;
+    private Picture backGroung = new Picture(10, 10, "resources/tela_abertura_900_930_v03.png");
     private int keyPressed = 0;
+    private Sound soundintro = new Sound(" resources/sounds/intro_ok.wav");
 
     public Intro(SimpleGfxGrid grid) {
         this.grid = grid;
         keyboard = new KeyboardListener();
-        backGroung = new Picture(10,10, "resources/tela_abertura_900_930.png");
+
+
     }
 
     public void init() {
+        soundintro.play(true);
         while (keyPressed == 0) {
             backGroung.draw();
+
+
         }
+        backGroung.delete();
+        soundintro.close();
     }
 
-    public int getKeyPressed(){
+    public int getKeyPressed() {
         return keyPressed;
     }
 
@@ -71,29 +78,42 @@ public class Intro {
         @Override
         public void keyPressed(KeyboardEvent keyboardEvent) {
 
-            switch (keyboardEvent.getKey()){
+            switch (keyboardEvent.getKey()) {
                 case KeyboardEvent.KEY_1:
                     keyPressed = 1;
-                    backGroung.delete();
+                   // backGroung.delete();
                     break;
                 case KeyboardEvent.KEY_2:
                     keyPressed = 2;
-                    backGroung.delete();
+                  //  backGroung.delete();
                     break;
                 case KeyboardEvent.KEY_3:
                     keyPressed = 3;
-                    backGroung.delete();
+                    //backGroung.delete();
                     break;
                 case KeyboardEvent.KEY_4:
                     keyPressed = 4;
-                    backGroung.delete();
+                    //backGroung.delete();
                     break;
             }
         }
 
         @Override
         public void keyReleased(KeyboardEvent keyboardEvent) {
-
+            switch (keyboardEvent.getKey()) {
+                case KeyboardEvent.KEY_1:
+                    keyPressed = 0;
+                    break;
+                case KeyboardEvent.KEY_2:
+                    keyPressed = 0;
+                    break;
+                case KeyboardEvent.KEY_3:
+                    keyPressed = 0;
+                    break;
+                case KeyboardEvent.KEY_4:
+                    keyPressed = 0;
+                    break;
+            }
         }
     }
 }

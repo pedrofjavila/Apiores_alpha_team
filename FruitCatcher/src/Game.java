@@ -1,22 +1,29 @@
 import org.academiadecodigo.apiores.Intro;
+import org.academiadecodigo.apiores.Sound;
 import org.academiadecodigo.apiores.gameelements.GameElementsFactory;
 import org.academiadecodigo.apiores.gameelements.objects.GameObject;
 import org.academiadecodigo.apiores.gameelements.objects.ObjectType;
 import org.academiadecodigo.apiores.gameelements.players.Player;
 import org.academiadecodigo.apiores.gameelements.players.PlayerType;
+import org.academiadecodigo.apiores.simplegfx.GameOver;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game {
 
     private SimpleGfxGrid grid;
-    private GameObject[] gameobjects;
+    private GameObject[] gameObjects;
     private int delay;
-    private int numberOfObjects = 5;
+    private int numberOfObjects = 20;
     private Player p1;
     private Intro intro;
+    private GameOver gameOver;
+    private Picture sky;
+    private Picture grass;
+    private Text health;
+    private Text score;
+   // private Sound soundgameover = new Sound("resources/sounds/gameover_ok.wav ");
 
     public Game(int cols, int rows, int delay) {
         this.grid = new SimpleGfxGrid(cols, rows);
@@ -27,29 +34,45 @@ public class Game {
 
         grid.init();
         intro = new Intro(grid);
-        gameobjects = new GameObject[numberOfObjects];
-        System.out.println(grid.getWidth());
-        System.out.println(grid.getHeigth());
+        gameOver = new GameOver(grid);
+
+
     }
 
     public void start() throws InterruptedException {
 
         intro.init();
+        gameObjects = new GameObject[numberOfObjects];
+
+
+
+        sky = new Picture(10,10, "resources/top.png");
+        grass = new Picture(10, grid.getHeigth() -10, "resources/bottom.png");
+
+        sky.draw();
+        grass.draw();
+
         createPlayer(intro.getKeyPressed());
         itemSetter(p1);
 
+
+
             while (true) {
-                if (gameWin() || gameOver()) {
+                if (gameWin()) {
+                    restart(); //WIN RESTART
+                    p1 = null;
+                    break;
+                } else if(gameOver()){
+                    restart();
+                    p1 = null;
                     break;
                 }
+                health =  new Text(20,20, "HEALTH: " + p1.getHealth());
+                score = new Text(120,20, "SCORE " + p1.getScore());
+                health.draw();
+                score.draw();
                 Thread.sleep(delay);
-
                 moveObjects();
-            }
-            while(true) {
-
-                init();
-                start();
             }
     }
 
@@ -57,10 +80,10 @@ public class Game {
 
     public void itemFiller(ObjectType scorer, ObjectType scorer2, ObjectType killer){
 
-        for (int i = 0; i < gameobjects.length; i++) {
+        for (int i = 0; i < gameObjects.length; i++) {
 
-            gameobjects[i] = GameElementsFactory.createNewGameObject(grid, scorer, scorer2, killer);
-            gameobjects[i].setGrid(grid);
+            gameObjects[i] = GameElementsFactory.createNewGameObject(grid, scorer, scorer2, killer);
+            gameObjects[i].setGrid(grid);
         }
 
 
@@ -105,14 +128,14 @@ public class Game {
 
 
     public void moveObjects()  {
-        for (int i = 0; i < gameobjects.length; i++) {
-            GameObject object = gameobjects[i];
+        for (int i = 0; i < gameObjects.length; i++) {
+            GameObject object = gameObjects[i];
 
             object.move();
 
 
             if(Game.Collides(p1.getPosition().getPicture(), object.getPos().getPicture()))           {
-                scoreChanger(gameobjects[i]);
+                scoreChanger(gameObjects[i]);
                 System.out.println(p1.getScore());
                 System.out.println(p1.getHealth());
             }
@@ -135,12 +158,13 @@ public class Game {
 
             if(obj.getType() == ObjectType.BEER){
                 p1.setScore();
+
             }
             if(obj.getType() == ObjectType.BRACKETS){
-                p1.healthDecrement();
+                p1.kill();
             }
-            if(obj.getType() == ObjectType.PINEAPPLE){
-                p1.setScore();
+            if(obj.getType() == ObjectType.SUMARIZER){
+                p1.healthDecrement();
             }
         }
 
@@ -149,11 +173,11 @@ public class Game {
             if(obj.getType() == ObjectType.BEER){
                 p1.setScore();
             }
-            if(obj.getType() == ObjectType.CAR){
+            if(obj.getType() == ObjectType.SUMARIZER){
                 p1.healthDecrement();
             }
             if(obj.getType() == ObjectType.PINEAPPLE){
-                p1.killRita();
+                p1.kill();
             }
         }
 
@@ -162,11 +186,11 @@ public class Game {
             if(obj.getType() == ObjectType.BEER){
                 p1.setScore();
             }
-            if(obj.getType() == ObjectType.PINEAPPLE){
-                p1.setScore();
+            if(obj.getType() == ObjectType.SUMARIZER){
+                p1.healthDecrement();
             }
             if(obj.getType() == ObjectType.BAD_DESIGN){
-                p1.healthDecrement();
+                p1.kill();
             }
         }
 
@@ -176,10 +200,10 @@ public class Game {
                 p1.setScore();
             }
             if(obj.getType() == ObjectType.CAR){
-                p1.healthDecrement();
+                p1.kill();
             }
-            if(obj.getType() == ObjectType.PINEAPPLE){
-                p1.setScore();
+            if(obj.getType() == ObjectType.SUMARIZER){
+                p1.healthDecrement();
             }
         }
     }
@@ -189,10 +213,20 @@ public class Game {
     }
 
     public boolean gameOver(){
+
         return p1.getHealth() <= 0;
+
     }
 
-    public void restart(){
+    public void restart() throws InterruptedException {
+
+        for(GameObject object : gameObjects){
+            object.picture.delete();
+        }
+
+        gameOver.init();
+        init();
+        start();
 
     }
 }
