@@ -7,6 +7,7 @@ import org.academiadecodigo.apiores.gameelements.players.Player;
 import org.academiadecodigo.apiores.gameelements.players.PlayerType;
 import org.academiadecodigo.apiores.simplegfx.GameOver;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -21,8 +22,10 @@ public class Game {
     private GameOver gameOver;
     private Picture sky;
     private Picture grass;
+    private Picture hud = new Picture(10, 80, "resources/banners_pontuacao.png");
     private Text health;
     private Text score;
+
 
 
 
@@ -56,13 +59,12 @@ public class Game {
         createPlayer(intro.getKeyPressed());
         itemSetter(p1);
 
-        health =  new Text(20,20, "HEALTH: " + p1.getHealth());
-        score = new Text(120,20, "SCORE " + p1.getScore());
+        health =  new Text(75,169, ""+ p1.getHealth());
+        score = new Text(75,99, "" + p1.getScore());
+        health.setColor(Color.WHITE);
+        score.setColor(Color.WHITE);
 
-                health =  new Text(20,20, "HEALTH: " + p1.getHealth());
-                score = new Text(120,20, "SCORE " + p1.getScore());
-                health.draw();
-                score.draw();
+
 
 
 
@@ -80,6 +82,9 @@ public class Game {
                 moveObjects();
                 health.setText("HEALTH: " + p1.getHealth());
                 score.setText("SCORE: " + p1.getScore());
+                hud.draw();
+                health.draw();
+                score.draw();
             }
     }
 
@@ -232,6 +237,7 @@ public class Game {
         gameOver.init();
         init();
         start();
+        hud.draw();
 
     }
 }
