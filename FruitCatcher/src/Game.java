@@ -47,7 +47,7 @@ public class Game {
         gameObjects = new GameObject[numberOfObjects];
 
         sky = new Picture(10,10, "resources/top.png");
-        grass = new Picture(10, grid.getHeigth() -10, "resources/bottom.png");
+        grass = new Picture(10, grid.getHeigth() -20, "resources/bottom.png");
         sky.draw();
         grass.draw();
 
