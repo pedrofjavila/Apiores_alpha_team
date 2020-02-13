@@ -14,7 +14,7 @@ public class GameOver {
 
         private SimpleGfxGrid grid;
         private KeyboardListener keyboard;
-        private Picture backGroung = new Picture(10,10, "resources/tela_game_over_900_930.png");;
+        private Picture backGroung = new Picture(10,10, "resources/tela_game_over_900_930_v02.png");;
         private boolean keyPressed = false;
 
         public GameOver(SimpleGfxGrid grid) {

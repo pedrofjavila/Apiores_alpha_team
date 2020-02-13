@@ -27,7 +27,7 @@ public class Player  {
     private ObjectType itemScorer2;
     private ObjectType killerItem;
     private Sound soundGameover = new Sound(" resources/sounds/gameover_ok.wav");
-
+    private Sound soundGameoverJoJo = new Sound (" resources/sounds/angry_game_over_ok.wav");
 
 
 
