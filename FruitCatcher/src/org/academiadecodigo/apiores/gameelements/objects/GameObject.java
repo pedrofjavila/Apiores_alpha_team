@@ -26,9 +26,6 @@ public abstract class GameObject {
         return pos;
     }
 
-    public GridDirection getDirection() {
-        return direction;
-    }
 
     public void setGrid(SimpleGfxGrid grid) {
         this.grid = grid;
@@ -48,8 +45,6 @@ public abstract class GameObject {
         if(this.pos.getRow() < 900) {
             picture.translate(0, speed);
             pos.setRow(pos.getRow() + speed);
-            //System.out.println(pos.getRow());
-            //System.out.println(pos.getCol());
         }else{
             int randomCol = (int) (Math.random()*(grid.getWidth() - 20) + 10);
             picture.translate(randomCol - pos.getCol(), -900);

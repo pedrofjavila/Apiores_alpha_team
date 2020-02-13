@@ -81,19 +81,15 @@ public class Intro {
             switch (keyboardEvent.getKey()) {
                 case KeyboardEvent.KEY_1:
                     keyPressed = 1;
-                   // backGroung.delete();
                     break;
                 case KeyboardEvent.KEY_2:
                     keyPressed = 2;
-                  //  backGroung.delete();
                     break;
                 case KeyboardEvent.KEY_3:
                     keyPressed = 3;
-                    //backGroung.delete();
                     break;
                 case KeyboardEvent.KEY_4:
                     keyPressed = 4;
-                    //backGroung.delete();
                     break;
             }
         }

@@ -1,6 +1,7 @@
 package org.academiadecodigo.apiores.simplegfx;
 
 import org.academiadecodigo.apiores.Intro;
+import org.academiadecodigo.apiores.Sound;
 import org.academiadecodigo.apiores.gameelements.players.Player;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
@@ -15,7 +16,8 @@ public class GameOver {
     private SimpleGfxGrid grid;
     private KeyboardListener keyboard;
     private Picture backGroung = new Picture(10, 10, "resources/tela_game_over_900_930_v02.png");
-    ;
+    private Sound soundgameover = new Sound(" resources/sounds/gameover_ok.wav");
+
     private boolean keyPressed = false;
 
     public GameOver(SimpleGfxGrid grid) {
@@ -24,11 +26,13 @@ public class GameOver {
     }
 
     public void init() {
+            soundgameover.setLoop(2);
 
         while (!keyPressed) {
             backGroung.draw();
 
         }
+
         backGroung.delete();
 
     }
@@ -54,18 +58,12 @@ public class GameOver {
             switch (keyboardEvent.getKey()) {
                 case KeyboardEvent.KEY_R:
                     keyPressed = true;
-                 //   backGroung.delete();
                     break;
             }
         }
 
         @Override
         public void keyReleased(KeyboardEvent keyboardEvent) {
-                /*switch(keyboardEvent.getKey()){
-                    case KeyboardEvent.KEY_R:
-                        keyPressed = false;
-                        break;
-                }*/
 
         }
     }
