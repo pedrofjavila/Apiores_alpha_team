@@ -54,6 +54,8 @@ public class Game {
 
         createPlayer(intro.getKeyPressed());
         itemSetter(p1);
+        health =  new Text(20,20, "HEALTH: " + p1.getHealth());
+        score = new Text(120,20, "SCORE " + p1.getScore());
 
 
 
@@ -67,10 +69,10 @@ public class Game {
                     p1 = null;
                     break;
                 }
-                health =  new Text(20,20, "HEALTH: " + p1.getHealth());
-                score = new Text(120,20, "SCORE " + p1.getScore());
                 health.draw();
                 score.draw();
+                score.setText("HEALTH: " + p1.getHealth());
+                score.setText("SCORE: " + p1.getScore());
                 Thread.sleep(delay);
                 moveObjects();
             }
@@ -146,10 +148,10 @@ public class Game {
 
     private static boolean Collides(Picture p1, Picture p2){
 
-        return ((p2.getX() >= p1.getX() && p2.getX() <= p1.getX()+p1.getWidth()) &&
-                (p2.getY() >= p1.getY() && p2.getY() <= p1.getY()+p1.getHeight())) ||
-                ((p2.getX()+p2.getWidth() >= p1.getX() && p2.getX()+p2.getWidth() <= p1.getX()+p1.getWidth())) &&
-                 (p2.getY() >= p1.getY() && p2.getY() <= p1.getY()+p1.getHeight());
+        return ((p2.getX() > p1.getX() && p2.getX() < p1.getX()+p1.getWidth()) &&
+                (p2.getY() > p1.getY() && p2.getY() < p1.getY()+p1.getHeight())) ||
+                ((p2.getX()+p2.getWidth() > p1.getX() && p2.getX()+p2.getWidth() < p1.getX()+p1.getWidth())) &&
+                 (p2.getY() > p1.getY() && p2.getY() < p1.getY()+p1.getHeight());
 
     }
 
