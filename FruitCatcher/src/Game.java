@@ -62,17 +62,13 @@ public class Game {
         gameMusic.play(true);
 
             while (true) {
-                if (gameWin()) {
+                if (gameWin() || gameOver()) {
                     gameMusic.stop();
                     restart(); //WIN RESTART
                     p1 = null;
                     break;
-                } else if(gameOver()){
-                    gameMusic.stop();
-                    restart();
-                    p1 = null;
-                    break;
                 }
+
                 Thread.sleep(delay);
                 moveObjects();
                 health.setText("HEALTH: " + p1.getHealth());
@@ -135,6 +131,7 @@ public class Game {
 
             if(Game.Collides(p1.getPosition().getPicture(), object.getPos().getPicture())){
                 scoreChanger(gameObjects[i]);
+                gameObjects[i].getHitSound().setLoop(1);
             }
         }
     }
@@ -215,11 +212,18 @@ public class Game {
         for(GameObject object : gameObjects){
             object.picture.delete();
         }
-        gameOver.init();
+        if(gameOver()) {
+            gameOver.init();
+        }
+        if(gameWin()){
+            gameOver.winInit();
+        }
+
         init();
         start();
         hud.draw();
     }
+
 }
 
 

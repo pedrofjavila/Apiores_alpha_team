@@ -16,7 +16,9 @@ public class GameOver {
     private SimpleGfxGrid grid;
     private KeyboardListener keyboard;
     private Picture backGroung = new Picture(10, 10, "resources/tela_game_over_900_930_v02.png");
+    private Picture winBackground = new Picture (10, 10, "resources/tela_you_win.png");
     private Sound soundgameover = new Sound(" resources/sounds/gameover_ok.wav");
+    private Sound soundWin = new Sound (" resources/sounds/475148__rezyma__victoryff-swf_OK.wav");
 
     private boolean keyPressed = false;
 
@@ -34,6 +36,18 @@ public class GameOver {
         }
         soundgameover.stop();
         backGroung.delete();
+    }
+
+    public void winInit(){
+        soundWin.setLoop(2);
+
+        while (!keyPressed) {
+            winBackground.draw();
+        }
+        soundWin.stop();
+        winBackground.delete();
+
+
     }
 
     public class KeyboardListener implements KeyboardHandler {
