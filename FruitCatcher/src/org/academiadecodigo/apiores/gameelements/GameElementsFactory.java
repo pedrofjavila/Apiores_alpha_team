@@ -32,22 +32,22 @@ public class GameElementsFactory {
 
         switch(objectType) {
             case BEER:
-                object = new Beer(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.BEER.getLink()), speed, grid, ObjectType.BEER);
+                object = new Beer(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.BEER.getLink()), speed, grid, ObjectType.BEER, ObjectType.BEER.getSoundLink());
                 break;
             case CAR:
-                object = new Car(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.CAR.getLink()), speed, grid, ObjectType.CAR);
+                object = new Car(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.CAR.getLink()), speed, grid, ObjectType.CAR, ObjectType.CAR.getSoundLink());
                 break;
             case BRACKETS:
-                object = new Brackets(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.BRACKETS.getLink()), speed, grid, ObjectType.BRACKETS);
+                object = new Brackets(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.BRACKETS.getLink()), speed, grid, ObjectType.BRACKETS, ObjectType.BRACKETS.getSoundLink());
                 break;
             case PINEAPPLE:
-                object = new Pineapple(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.PINEAPPLE.getLink()), speed, grid, ObjectType.PINEAPPLE);
+                object = new Pineapple(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.PINEAPPLE.getLink()), speed, grid, ObjectType.PINEAPPLE, ObjectType.PINEAPPLE.getSoundLink());
                 break;
             case SUMARIZER:
-                object = new Sumarizer(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.SUMARIZER.getLink()), speed, grid, ObjectType.SUMARIZER);
+                object = new Sumarizer(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.SUMARIZER.getLink()), speed, grid, ObjectType.SUMARIZER, ObjectType.SUMARIZER.getSoundLink());
                 break;
             case BAD_DESIGN:
-                object = new BadDesign(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.BAD_DESIGN.getLink()), speed, grid, ObjectType.BAD_DESIGN);
+                object = new BadDesign(grid.makeGridPosition(grid.columnToX(randomCol), 10,ObjectType.BAD_DESIGN.getLink()), speed, grid, ObjectType.BAD_DESIGN, ObjectType.BAD_DESIGN.getSoundLink());
                 break;
         }
         return object;

@@ -1,5 +1,6 @@
 package org.academiadecodigo.apiores.gameelements.objects;
 
+import org.academiadecodigo.apiores.Sound;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
@@ -11,13 +12,15 @@ public abstract class GameObject {
     public Picture picture;
     public int speed;
     private ObjectType type;
+    private Sound hitSound;
 
-    public GameObject(SimpleGfxGridPosition position, int speed, SimpleGfxGrid grid, ObjectType type) {
+    public GameObject(SimpleGfxGridPosition position, int speed, SimpleGfxGrid grid, ObjectType type, String hitSound) {
         this.pos = position;
         this.picture = pos.getPicture();
         this.speed = speed;
         this.grid = grid;
         this.type = type;
+        this.hitSound = new Sound(hitSound);
     }
 
     public  SimpleGfxGridPosition getPos(){
@@ -31,6 +34,10 @@ public abstract class GameObject {
 
     public ObjectType getType() {
         return type;
+    }
+
+    public Sound getHitSound(){
+        return hitSound;
     }
 
     //boundaries and object movement!
