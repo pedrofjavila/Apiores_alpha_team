@@ -6,6 +6,7 @@ import org.academiadecodigo.apiores.gameelements.players.Player;
 import org.academiadecodigo.apiores.gameelements.players.PlayerType;
 import org.academiadecodigo.apiores.simplegfx.GameOver;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game {
@@ -19,6 +20,8 @@ public class Game {
     private GameOver gameOver;
     private Picture sky;
     private Picture grass;
+    private Text health;
+    private Text score;
 
     public Game(int cols, int rows, int delay) {
         this.grid = new SimpleGfxGrid(cols, rows);
@@ -50,6 +53,8 @@ public class Game {
         createPlayer(intro.getKeyPressed());
         itemSetter(p1);
 
+
+
             while (true) {
                 if (gameWin()) {
                     restart(); //WIN RESTART
@@ -60,6 +65,10 @@ public class Game {
                     p1 = null;
                     break;
                 }
+                health =  new Text(20,20, "HEALTH: " + p1.getHealth());
+                score = new Text(120,20, "SCORE " + p1.getScore());
+                health.draw();
+                score.draw();
                 Thread.sleep(delay);
                 moveObjects();
             }
@@ -151,8 +160,8 @@ public class Game {
             if(obj.getType() == ObjectType.BRACKETS){
                 p1.kill();
             }
-            if(obj.getType() == ObjectType.PINEAPPLE){
-                p1.setScore();
+            if(obj.getType() == ObjectType.SUMARIZER){
+                p1.healthDecrement();
             }
         }
 
@@ -161,8 +170,8 @@ public class Game {
             if(obj.getType() == ObjectType.BEER){
                 p1.setScore();
             }
-            if(obj.getType() == ObjectType.CAR){
-                p1.setScore();
+            if(obj.getType() == ObjectType.SUMARIZER){
+                p1.healthDecrement();
             }
             if(obj.getType() == ObjectType.PINEAPPLE){
                 p1.kill();
@@ -174,8 +183,8 @@ public class Game {
             if(obj.getType() == ObjectType.BEER){
                 p1.setScore();
             }
-            if(obj.getType() == ObjectType.PINEAPPLE){
-                p1.setScore();
+            if(obj.getType() == ObjectType.SUMARIZER){
+                p1.healthDecrement();
             }
             if(obj.getType() == ObjectType.BAD_DESIGN){
                 p1.kill();
@@ -190,8 +199,8 @@ public class Game {
             if(obj.getType() == ObjectType.CAR){
                 p1.kill();
             }
-            if(obj.getType() == ObjectType.PINEAPPLE){
-                p1.setScore();
+            if(obj.getType() == ObjectType.SUMARIZER){
+                p1.healthDecrement();
             }
         }
     }
