@@ -15,20 +15,15 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 //turned public
 public class Player  {
 
-    private boolean alive = true;
     private KeyboardListener keyboard;
     private int score;
-    private int health = 50;
-    private Picture picture;
+    private int health;
     private PlayerType type;
     private SimpleGfxGridPosition position;
     private SimpleGfxGrid grid;
     private ObjectType itemScorer;
     private ObjectType itemScorer2;
     private ObjectType killerItem;
-    private Sound soundGameover = new Sound(" resources/sounds/gameover_ok.wav");
-    private Sound soundGameoverJoJo = new Sound (" resources/sounds/angry_game_over_ok.wav");
-
 
 
     public Player (SimpleGfxGridPosition position, SimpleGfxGrid grid, PlayerType type,ObjectType itemScorer, ObjectType itemScorer2, ObjectType killerItem){
@@ -39,13 +34,8 @@ public class Player  {
         this.itemScorer = itemScorer;
         this.itemScorer2 = itemScorer2;
         this.killerItem = killerItem;
+        health = 50;
 
-
-    }
-
-
-
-    public void moveInDirection(GridDirection direction, int speed) {
 
     }
 
@@ -66,24 +56,12 @@ public class Player  {
         return killerItem;
     }
 
-    public boolean isAlive(){
-        return alive;
-    }
-
-    public void setAlive(boolean alive) {
-        this.alive = alive;
-    }
-
     public int getScore() {
         return score;
     }
 
     public void healthDecrement() {
-        if(health ==0){
-            position.getPicture().delete();
-            return;
-        }
-        health-=30;
+        health -= 10;
     }
 
     public int getHealth() {
@@ -92,9 +70,6 @@ public class Player  {
 
     public void kill(){
         health = 0;
-        soundGameover.play(true);
-        soundGameover.setLoop(2);
-
 
      //   soundGameover.close();
     }
@@ -103,10 +78,7 @@ public class Player  {
         score+=20;
     }
 
-    // check if needed, if not to delete
-    public void setPicture(Picture picture){
 
-    }
 
     public SimpleGfxGrid getGrid() {
         return grid;

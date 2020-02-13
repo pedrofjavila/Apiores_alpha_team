@@ -15,7 +15,7 @@ public class Game {
     private SimpleGfxGrid grid;
     private GameObject[] gameObjects;
     private int delay;
-    private int numberOfObjects = 20;
+    private int numberOfObjects = 15;
     private Player p1;
     private Intro intro;
     private GameOver gameOver;
@@ -23,7 +23,8 @@ public class Game {
     private Picture grass;
     private Text health;
     private Text score;
-   // private Sound soundgameover = new Sound("resources/sounds/gameover_ok.wav ");
+
+
 
     public Game(int cols, int rows, int delay) {
         this.grid = new SimpleGfxGrid(cols, rows);
@@ -49,13 +50,19 @@ public class Game {
         sky = new Picture(10,10, "resources/top.png");
         grass = new Picture(10, grid.getHeigth() -10, "resources/bottom.png");
 
+
         sky.draw();
         grass.draw();
-
         createPlayer(intro.getKeyPressed());
         itemSetter(p1);
+
         health =  new Text(20,20, "HEALTH: " + p1.getHealth());
         score = new Text(120,20, "SCORE " + p1.getScore());
+
+                health =  new Text(20,20, "HEALTH: " + p1.getHealth());
+                score = new Text(120,20, "SCORE " + p1.getScore());
+                health.draw();
+                score.draw();
 
 
 
@@ -69,12 +76,10 @@ public class Game {
                     p1 = null;
                     break;
                 }
-                health.draw();
-                score.draw();
-                score.setText("HEALTH: " + p1.getHealth());
-                score.setText("SCORE: " + p1.getScore());
                 Thread.sleep(delay);
                 moveObjects();
+                health.setText("HEALTH: " + p1.getHealth());
+                score.setText("SCORE: " + p1.getScore());
             }
     }
 
@@ -136,10 +141,8 @@ public class Game {
             object.move();
 
 
-            if(Game.Collides(p1.getPosition().getPicture(), object.getPos().getPicture()))           {
+            if(Game.Collides(p1.getPosition().getPicture(), object.getPos().getPicture())){
                 scoreChanger(gameObjects[i]);
-                System.out.println(p1.getScore());
-                System.out.println(p1.getHealth());
             }
         }
     }

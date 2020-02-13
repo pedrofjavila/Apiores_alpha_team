@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException{
 
-        Game game = new Game(30, 31, 100);
+        Game game = new Game(30, 31, 150);
 
 
 
