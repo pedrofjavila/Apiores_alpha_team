@@ -10,14 +10,23 @@ public class GameElementsFactory {
 
     public static GameObject createNewGameObject(SimpleGfxGrid grid, ObjectType scorer, ObjectType scorer2, ObjectType killer){
 
-        int randomObject = (int) (Math.random() * 3);
+        int randomObject = (int) (Math.random() * 20);
+        int i;
+        if(randomObject > 5){
+            i = 2;
+        }else if(randomObject<2.5){
+            i=1;
+        }else{
+            i=0;
+        }
+
         ObjectType[] playerObjects =  {
                 scorer,
                 scorer2,
                 killer
         };
 
-        ObjectType objectType = playerObjects[randomObject];
+        ObjectType objectType = playerObjects[i];
         int randomCol = (int) (Math.random() * grid.getCols());
         int speed = (int) (Math.random()*(65 - 20) + 20);
 

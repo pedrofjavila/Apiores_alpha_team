@@ -17,7 +17,7 @@ public class Intro {
     private SimpleGfxGrid grid;
     private KeyboardListener keyboard;
     private SimpleGfxGridPosition position;
-    private Picture backGroung = new Picture(10,10, "resources/tela_abertura_900_930.png");;
+    private Picture backGroung = new Picture(10,10, "resources/tela_abertura_900_930_v02.png");
     private int keyPressed = 0;
 
     public Intro(SimpleGfxGrid grid) {

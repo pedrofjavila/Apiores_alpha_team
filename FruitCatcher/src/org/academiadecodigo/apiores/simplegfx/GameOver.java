@@ -14,7 +14,7 @@ public class GameOver {
 
         private SimpleGfxGrid grid;
         private KeyboardListener keyboard;
-        private Picture backGroung = new Picture(10,10, "resources/tela_abertura_900_930.png");;
+        private Picture backGroung = new Picture(10,10, "resources/tela_game_over_900_930.png");;
         private boolean keyPressed = false;
 
         public GameOver(SimpleGfxGrid grid) {
@@ -26,7 +26,9 @@ public class GameOver {
             while (!keyPressed) {
                 backGroung.draw();
             }
+            keyPressed = true;
         }
+
 
         public class KeyboardListener implements KeyboardHandler {
 
@@ -55,11 +57,11 @@ public class GameOver {
 
             @Override
             public void keyReleased(KeyboardEvent keyboardEvent) {
-                switch(keyboardEvent.getKey()){
+                /*switch(keyboardEvent.getKey()){
                     case KeyboardEvent.KEY_R:
                         keyPressed = false;
                         break;
-                }
+                }*/
 
             }
         }

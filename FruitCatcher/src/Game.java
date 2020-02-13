@@ -11,16 +11,17 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Game {
 
     private SimpleGfxGrid grid;
-    private GameObject[] gameobjects;
+    private GameObject[] gameObjects;
     private int delay;
-    private int numberOfObjects = 5;
+    private int numberOfObjects = 20;
     private Player p1;
     private Intro intro;
     private GameOver gameOver;
+    private Picture sky;
+    private Picture grass;
 
     public Game(int cols, int rows, int delay) {
         this.grid = new SimpleGfxGrid(cols, rows);
-        this.gameOver = new GameOver(grid);
         this.delay = delay;
     }
 
@@ -28,37 +29,50 @@ public class Game {
 
         grid.init();
         intro = new Intro(grid);
+        gameOver = new GameOver(grid);
+
 
     }
 
     public void start() throws InterruptedException {
 
         intro.init();
-        gameobjects = new GameObject[numberOfObjects];
+        gameObjects = new GameObject[numberOfObjects];
+
+
+
+        sky = new Picture(10,10, "resources/top.png");
+        grass = new Picture(10, grid.getHeigth() -10, "resources/bottom.png");
+
+        sky.draw();
+        grass.draw();
+
         createPlayer(intro.getKeyPressed());
         itemSetter(p1);
 
             while (true) {
-                if (gameWin() || gameOver()) {
-
+                if (gameWin()) {
+                    restart(); //WIN RESTART
+                    p1 = null;
+                    break;
+                } else if(gameOver()){
+                    restart();
                     p1 = null;
                     break;
                 }
                 Thread.sleep(delay);
                 moveObjects();
             }
-            restart();
-
     }
 
 
 
     public void itemFiller(ObjectType scorer, ObjectType scorer2, ObjectType killer){
 
-        for (int i = 0; i < gameobjects.length; i++) {
+        for (int i = 0; i < gameObjects.length; i++) {
 
-            gameobjects[i] = GameElementsFactory.createNewGameObject(grid, scorer, scorer2, killer);
-            gameobjects[i].setGrid(grid);
+            gameObjects[i] = GameElementsFactory.createNewGameObject(grid, scorer, scorer2, killer);
+            gameObjects[i].setGrid(grid);
         }
 
 
@@ -103,14 +117,14 @@ public class Game {
 
 
     public void moveObjects()  {
-        for (int i = 0; i < gameobjects.length; i++) {
-            GameObject object = gameobjects[i];
+        for (int i = 0; i < gameObjects.length; i++) {
+            GameObject object = gameObjects[i];
 
             object.move();
 
 
             if(Game.Collides(p1.getPosition().getPicture(), object.getPos().getPicture()))           {
-                scoreChanger(gameobjects[i]);
+                scoreChanger(gameObjects[i]);
                 System.out.println(p1.getScore());
                 System.out.println(p1.getHealth());
             }
@@ -135,7 +149,7 @@ public class Game {
                 p1.setScore();
             }
             if(obj.getType() == ObjectType.BRACKETS){
-                p1.healthDecrement();
+                p1.kill();
             }
             if(obj.getType() == ObjectType.PINEAPPLE){
                 p1.setScore();
@@ -151,7 +165,7 @@ public class Game {
                 p1.setScore();
             }
             if(obj.getType() == ObjectType.PINEAPPLE){
-                p1.killRita();
+                p1.kill();
             }
         }
 
@@ -164,7 +178,7 @@ public class Game {
                 p1.setScore();
             }
             if(obj.getType() == ObjectType.BAD_DESIGN){
-                p1.healthDecrement();
+                p1.kill();
             }
         }
 
@@ -174,7 +188,7 @@ public class Game {
                 p1.setScore();
             }
             if(obj.getType() == ObjectType.CAR){
-                p1.healthDecrement();
+                p1.kill();
             }
             if(obj.getType() == ObjectType.PINEAPPLE){
                 p1.setScore();
@@ -192,7 +206,7 @@ public class Game {
 
     public void restart() throws InterruptedException {
 
-        for(GameObject object : gameobjects){
+        for(GameObject object : gameObjects){
             object.picture.delete();
         }
 

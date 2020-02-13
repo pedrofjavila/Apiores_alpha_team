@@ -80,20 +80,21 @@ public class Player  {
     public void healthDecrement() {
         if(health ==0){
             position.getPicture().delete();
+            return;
         }
-        health--;
+        health-=30;
     }
 
     public int getHealth() {
         return health;
     }
 
-    public void killRita(){
+    public void kill(){
         health = 0;
     }
 
     public void setScore() {
-        score++;
+        score+=20;
     }
 
     // check if needed, if not to delete
@@ -148,14 +149,12 @@ public class Player  {
                 case KeyboardEvent.KEY_LEFT:
                     if(position.getCol()> 10) {
                         player.translate(-30, 0);
-                        position.rectangle.translate(-30, 0);
                         position.setPos(position.getCol() - 30, 0);
                         break;
                     }
                 case KeyboardEvent.KEY_RIGHT:
                     if(position.getCol() < grid.getWidth() - 20 ) {
                         player.translate(30, 0);
-                        position.rectangle.translate(30, 0);
                         position.setPos(position.getCol() + 30, 0);
                         break;
                     }
