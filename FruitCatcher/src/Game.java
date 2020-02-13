@@ -27,8 +27,6 @@ public class Game {
     private Text score;
 
 
-
-
     public Game(int cols, int rows, int delay) {
         this.grid = new SimpleGfxGrid(cols, rows);
         this.delay = delay;
@@ -49,9 +47,8 @@ public class Game {
         gameObjects = new GameObject[numberOfObjects];
 
 
-
-        sky = new Picture(10,10, "resources/top.png");
-        grass = new Picture(10, grid.getHeigth() -10, "resources/bottom.png");
+        sky = new Picture(10, 10, "resources/top.png");
+        grass = new Picture(10, grid.getHeigth() - 10, "resources/bottom.png");
 
 
         sky.draw();
@@ -59,38 +56,34 @@ public class Game {
         createPlayer(intro.getKeyPressed());
         itemSetter(p1);
 
-        health =  new Text(75,169, ""+ p1.getHealth());
-        score = new Text(75,99, "" + p1.getScore());
+        health = new Text(75, 169, "" + p1.getHealth());
+        score = new Text(75, 99, "" + p1.getScore());
         health.setColor(Color.WHITE);
         score.setColor(Color.WHITE);
 
 
-
-
-
-            while (true) {
-                if (gameWin()) {
-                    restart(); //WIN RESTART
-                    p1 = null;
-                    break;
-                } else if(gameOver()){
-                    restart();
-                    p1 = null;
-                    break;
-                }
-                Thread.sleep(delay);
-                moveObjects();
-                health.setText("HEALTH: " + p1.getHealth());
-                score.setText("SCORE: " + p1.getScore());
-                hud.draw();
-                health.draw();
-                score.draw();
+        while (true) {
+            if (gameWin()) {
+                restart(); //WIN RESTART
+                p1 = null;
+                break;
+            } else if (gameOver()) {
+                restart();
+                p1 = null;
+                break;
             }
+            Thread.sleep(delay);
+            moveObjects();
+            health.setText("HEALTH: " + p1.getHealth());
+            score.setText("SCORE: " + p1.getScore());
+            hud.draw();
+            health.draw();
+            score.draw();
+        }
     }
 
 
-
-    public void itemFiller(ObjectType scorer, ObjectType scorer2, ObjectType killer){
+    public void itemFiller(ObjectType scorer, ObjectType scorer2, ObjectType killer) {
 
         for (int i = 0; i < gameObjects.length; i++) {
 
@@ -101,26 +94,26 @@ public class Game {
 
     }
 
-    public void itemSetter(Player player){
-        if(player.getType() == PlayerType.SORAIA){
+    public void itemSetter(Player player) {
+        if (player.getType() == PlayerType.SORAIA) {
             itemFiller(player.getItemScorer(), player.getItemScorer2(), player.getKillerItem());
         }
 
-        if(player.getType() == PlayerType.JOJO){
+        if (player.getType() == PlayerType.JOJO) {
             itemFiller(player.getItemScorer(), player.getItemScorer2(), player.getKillerItem());
         }
-        if(player.getType() == PlayerType.RITA){
+        if (player.getType() == PlayerType.RITA) {
             itemFiller(player.getItemScorer(), player.getItemScorer2(), player.getKillerItem());
         }
-        if(player.getType() == PlayerType.RICARDO){
+        if (player.getType() == PlayerType.RICARDO) {
             itemFiller(player.getItemScorer(), player.getItemScorer2(), player.getKillerItem());
         }
 
     }
 
-    public void createPlayer(int i){
+    public void createPlayer(int i) {
 
-        switch (i){
+        switch (i) {
             case 1:
                 p1 = GameElementsFactory.createNewPlayer(grid, PlayerType.SORAIA);
                 break;
@@ -137,92 +130,92 @@ public class Game {
     }
 
 
-
-
-    public void moveObjects()  {
+    public void moveObjects() {
         for (int i = 0; i < gameObjects.length; i++) {
             GameObject object = gameObjects[i];
 
             object.move();
 
 
-            if(Game.Collides(p1.getPosition().getPicture(), object.getPos().getPicture())){
+            if (Game.Collides(p1.getPosition().getPicture(), object.getPos().getPicture())) {
                 scoreChanger(gameObjects[i]);
+                moveObjects();
             }
         }
     }
 
 
+    private static boolean Collides(Picture p1, Picture p2) {
 
-    private static boolean Collides(Picture p1, Picture p2){
 
-        return ((p2.getX() > p1.getX() && p2.getX() < p1.getX()+p1.getWidth()) &&
-                (p2.getY() > p1.getY() && p2.getY() < p1.getY()+p1.getHeight())) ||
-                ((p2.getX()+p2.getWidth() > p1.getX() && p2.getX()+p2.getWidth() < p1.getX()+p1.getWidth())) &&
-                 (p2.getY() > p1.getY() && p2.getY() < p1.getY()+p1.getHeight());
 
+        return (((p2.getX() > p1.getX() && p2.getX() < p1.getX() + p1.getWidth()) &&
+                (p2.getY() > p1.getY() && p2.getY() < p1.getY() + p1.getHeight())) ||
+                ((p2.getX() + p2.getWidth() > p1.getX() && p2.getX() + p2.getWidth() < p1.getX() + p1.getWidth())) &&
+                        (p2.getY() > p1.getY() && p2.getY() < p1.getY() + p1.getHeight()));
+
+        }
+
+    public void scoreChanger(GameObject obj) {
+        if (p1.getType() == PlayerType.JOJO) {
+
+            if (obj.getType() == ObjectType.BEER) {
+                p1.setScore();
+
+            }
+            if (obj.getType() == ObjectType.BRACKETS) {
+                p1.kill();
+            }
+            if (obj.getType() == ObjectType.SUMARIZER) {
+                p1.healthDecrement();
+            }
+        }
+
+        if (p1.getType() == PlayerType.RITA) {
+
+            if (obj.getType() == ObjectType.BEER) {
+                p1.setScore();
+            }
+            if (obj.getType() == ObjectType.SUMARIZER) {
+                p1.healthDecrement();
+            }
+            if (obj.getType() == ObjectType.PINEAPPLE) {
+                p1.kill();
+            }
+        }
+
+        if (p1.getType() == PlayerType.RICARDO) {
+
+            if (obj.getType() == ObjectType.BEER) {
+                p1.setScore();
+            }
+            if (obj.getType() == ObjectType.SUMARIZER) {
+                p1.healthDecrement();
+            }
+            if (obj.getType() == ObjectType.BAD_DESIGN) {
+                p1.kill();
+            }
+        }
+
+        if (p1.getType() == PlayerType.SORAIA) {
+
+            if (obj.getType() == ObjectType.BEER) {
+                p1.setScore();
+            }
+            if (obj.getType() == ObjectType.CAR) {
+                p1.kill();
+            }
+            if (obj.getType() == ObjectType.SUMARIZER) {
+                p1.healthDecrement();
+            }
+        }
     }
 
-    public void scoreChanger(GameObject obj){
-        if(p1.getType() == PlayerType.JOJO){
-
-            if(obj.getType() == ObjectType.BEER){
-                p1.setScore();
-
-            }
-            if(obj.getType() == ObjectType.BRACKETS){
-                p1.kill();
-            }
-            if(obj.getType() == ObjectType.SUMARIZER){
-                p1.healthDecrement();
-            }
-        }
-
-        if(p1.getType() == PlayerType.RITA){
-
-            if(obj.getType() == ObjectType.BEER){
-                p1.setScore();
-            }
-            if(obj.getType() == ObjectType.SUMARIZER){
-                p1.healthDecrement();
-            }
-            if(obj.getType() == ObjectType.PINEAPPLE){
-                p1.kill();
-            }
-        }
-
-        if(p1.getType() == PlayerType.RICARDO){
-
-            if(obj.getType() == ObjectType.BEER){
-                p1.setScore();
-            }
-            if(obj.getType() == ObjectType.SUMARIZER){
-                p1.healthDecrement();
-            }
-            if(obj.getType() == ObjectType.BAD_DESIGN){
-                p1.kill();
-            }
-        }
-
-        if(p1.getType() == PlayerType.SORAIA){
-
-            if(obj.getType() == ObjectType.BEER){
-                p1.setScore();
-            }
-            if(obj.getType() == ObjectType.CAR){
-                p1.kill();
-            }
-            if(obj.getType() == ObjectType.SUMARIZER){
-                p1.healthDecrement();
-            }
-        }
-    }
-
-    public boolean gameWin(){
+    public boolean gameWin() {
         return p1.getScore() >= 200;
     }
 
-    public boolean gameOver(){
+    public boolean gameOver() {
 
         return p1.getHealth() <= 0;
 
@@ -230,7 +223,7 @@ public class Game {
 
     public void restart() throws InterruptedException {
 
-        for(GameObject object : gameObjects){
+        for (GameObject object : gameObjects) {
             object.picture.delete();
         }
 
