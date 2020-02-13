@@ -12,57 +12,61 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class GameOver {
 
-        private SimpleGfxGrid grid;
-        private KeyboardListener keyboard;
-        private Picture backGroung = new Picture(10,10, "resources/tela_game_over_900_930_v02.png");;
-        private boolean keyPressed = false;
+    private SimpleGfxGrid grid;
+    private KeyboardListener keyboard;
+    private Picture backGroung = new Picture(10, 10, "resources/tela_game_over_900_930_v02.png");
+    ;
+    private boolean keyPressed = false;
 
-        public GameOver(SimpleGfxGrid grid) {
-            this.grid = grid;
-            keyboard = new KeyboardListener();
+    public GameOver(SimpleGfxGrid grid) {
+        this.grid = grid;
+        keyboard = new KeyboardListener();
+    }
+
+    public void init() {
+
+        while (!keyPressed) {
+            backGroung.draw();
+
+        }
+        backGroung.delete();
+
+    }
+
+
+    public class KeyboardListener implements KeyboardHandler {
+
+        public KeyboardListener() {
+
+            Keyboard keyboard = new Keyboard(this);
+
+            //Choice 1
+            KeyboardEvent keyR = new KeyboardEvent();
+            keyR.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+            keyR.setKey(KeyboardEvent.KEY_R);
+            keyboard.addEventListener(keyR);
+
+
         }
 
-        public void init() {
-            while (!keyPressed) {
-                backGroung.draw();
+        @Override
+        public void keyPressed(KeyboardEvent keyboardEvent) {
+            switch (keyboardEvent.getKey()) {
+                case KeyboardEvent.KEY_R:
+                    keyPressed = true;
+                 //   backGroung.delete();
+                    break;
             }
-            keyPressed = true;
         }
 
-
-        public class KeyboardListener implements KeyboardHandler {
-
-            public KeyboardListener() {
-
-                Keyboard keyboard = new Keyboard(this);
-
-                //Choice 1
-                KeyboardEvent keyR = new KeyboardEvent();
-                keyR.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-                keyR.setKey(KeyboardEvent.KEY_R);
-                keyboard.addEventListener(keyR);
-
-
-            }
-
-            @Override
-            public void keyPressed(KeyboardEvent keyboardEvent) {
-                    switch(keyboardEvent.getKey()){
-                        case KeyboardEvent.KEY_R:
-                            keyPressed = true;
-                            backGroung.delete();
-                            break;
-                    }
-            }
-
-            @Override
-            public void keyReleased(KeyboardEvent keyboardEvent) {
+        @Override
+        public void keyReleased(KeyboardEvent keyboardEvent) {
                 /*switch(keyboardEvent.getKey()){
                     case KeyboardEvent.KEY_R:
                         keyPressed = false;
                         break;
                 }*/
 
-            }
         }
     }
+}
