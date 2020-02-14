@@ -206,7 +206,7 @@ public class Game {
     }
 
     public boolean gameWin(){
-        return p1.getScore() >= 200;
+        return p1.getScore() >= 300;
     }
 
     public boolean gameOver(){
