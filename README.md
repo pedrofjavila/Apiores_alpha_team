@@ -1,6 +1,6 @@
 
 
-Welcom to the team project of the Alpha team.
+Welcome to the team project of the Alpha team.
 
 Main Contributors:
 
@@ -12,4 +12,4 @@ Rui aka Jojo-- Ricardo aka "Design master" -- Rita aka "Felhado" -- Soraia aka "
 
 The tasks are distributed by team.
 
-(will follow up more in here)
+We successfully done a game within a week, after having only 4 weeks of Java training.
