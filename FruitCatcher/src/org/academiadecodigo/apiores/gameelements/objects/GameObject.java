@@ -27,6 +27,7 @@ public abstract class GameObject {
         return pos;
     }
 
+
     public void setGrid(SimpleGfxGrid grid) {
         this.grid = grid;
     }
@@ -38,6 +39,8 @@ public abstract class GameObject {
     public Sound getHitSound(){
         return hitSound;
     }
+
+    //boundaries and object movement!
 
     public void move(){
         if(this.pos.getRow() < 900) {

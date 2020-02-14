@@ -1,6 +1,11 @@
 package org.academiadecodigo.apiores;
 
+import org.academiadecodigo.apiores.gameelements.players.Player;
 import org.academiadecodigo.apiores.simplegfx.SimpleGfxGrid;
+import org.academiadecodigo.apiores.simplegfx.SimpleGfxGridPosition;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Movable;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -41,25 +46,30 @@ public class Intro {
 
             Keyboard keyboard = new Keyboard(this);
 
+            //Choice 1
             KeyboardEvent one = new KeyboardEvent();
             one.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             one.setKey(KeyboardEvent.KEY_1);
             keyboard.addEventListener(one);
 
+            //Choice 2
             KeyboardEvent two = new KeyboardEvent();
             two.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             two.setKey(KeyboardEvent.KEY_2);
             keyboard.addEventListener(two);
 
+            //Choice 3
             KeyboardEvent three = new KeyboardEvent();
             three.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             three.setKey(KeyboardEvent.KEY_3);
             keyboard.addEventListener(three);
 
+            //Choice 4
             KeyboardEvent four = new KeyboardEvent();
             four.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             four.setKey(KeyboardEvent.KEY_4);
             keyboard.addEventListener(four);
+
         }
 
         @Override
